@@ -12,30 +12,7 @@ const router = express.Router();
 
 
 
-router.delete(
-    '/',
-    (_req, res) => {
-        res.clearCookie('token');
-        return res.json({ message: 'success' });
-    }
-);
-
-router.get(
-    '/',
-    (req, res) => {
-        const { user } = req;
-        if (user) {
-            const safeUser = {
-                id: user.id,
-                email: user.email,
-                username: user.username,
-            };
-            return res.json({
-                user: safeUser
-            });
-        } else return res.json({ user: null });
-    }
-);
+// middleware checks key of credential (either username or email) and key of password.
 
 const validateLogin = [
     check('credential')
@@ -48,6 +25,7 @@ const validateLogin = [
     handleValidationErrors
 ];
 
+// Log in
 router.post(
     '/',
     validateLogin,
@@ -73,8 +51,10 @@ router.post(
 
         const safeUser = {
             id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email,
-            username: user.username,
+            username: user.username
         };
 
         await setTokenCookie(res, safeUser);
@@ -84,5 +64,41 @@ router.post(
         });
     }
 );
+
+
+
+//will remove the token cookie from the response 
+// Log out
+router.delete(
+    '/',
+    (_req, res) => {
+        res.clearCookie('token');
+        return res.json({ message: 'success' });
+    }
+);
+
+
+// Restore session user
+router.get(
+    '/',
+    (req, res) => {
+        const { user } = req;
+        if (user) {
+            const safeUser = {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                username: user.username
+            };
+            return res.json({
+                user: safeUser
+            });
+        } else return res.json({ user: null });
+    }
+);
+
+
+
 
 module.exports = router;
