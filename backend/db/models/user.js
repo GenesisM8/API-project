@@ -15,6 +15,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         onDelete: 'CASCADE'
       });
+
+      User.belongsToMany(models.Spot, {
+        through: models.Review,
+        otherKey: 'spotId',
+        foreignKey: 'userId',
+        onDelete: 'CASCADE'
+      });
     }
   };
 
