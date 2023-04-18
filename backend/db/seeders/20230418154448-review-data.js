@@ -11,7 +11,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     options.tableName = 'Reviews';
     return queryInterface.bulkInsert(options, [
-
+//text
       {
         review: "This was an awesome spot!",
         stars: 5,
