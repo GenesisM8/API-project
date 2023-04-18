@@ -8,11 +8,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    options.tableName= 'Spots';
-    return queryInterface.bulkInsert(options,[
+  async up(queryInterface, Sequelize) {
+    options.tableName = 'Spots';
+    return queryInterface.bulkInsert(options, [
 
-      { ownerId: 1,
+      {
+        ownerId: 1,
         address: "123 Disney Lane",
         city: "San Francisco",
         state: "Florida",
@@ -21,7 +22,8 @@ module.exports = {
         lng: -122.4730327,
         name: "Disney House",
         description: "Place where dreams come true",
-        price: 123},
+        price: 123
+      },
       {
         ownerId: 2,
         address: "456 New York Lane",
@@ -45,7 +47,7 @@ module.exports = {
         name: "Chicago House",
         description: "Water and city view",
         price: 230
-},
+      },
       {
         ownerId: 1,
         address: "112 Vegas Lane",
@@ -57,13 +59,13 @@ module.exports = {
         name: "Vegas House",
         description: "Close to shows, and entertainment",
         price: 450
-},
-    ],{});
+      },
+    ], {});
   },
 
-  async down (queryInterface, Sequelize) {
-   
-    options.tableName= 'Spots';
+  async down(queryInterface, Sequelize) {
+
+    options.tableName = 'Spots';
     await queryInterface.bulkDelete(options)
   }
 };
