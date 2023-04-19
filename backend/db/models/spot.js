@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Booking,
         otherKey: 'userId',
         foreignKey: 'spotId',
+        as:'Owner',
         onDelete: 'CASCADE'
       });
 
