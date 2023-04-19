@@ -24,6 +24,11 @@ module.exports = {
       {
         spotId: 3,
         url: "image url",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "image url",
         preview: true
       },
     ], {})
