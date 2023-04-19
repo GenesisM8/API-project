@@ -11,27 +11,27 @@ const router = express.Router();
 
 //get all spots
 router.get('/', async (req, res)=>{
-    const spots = await Spot.findAll({ raw: true })
+    const allSpots = await Spot.findAll()
 
-    for (let spot of spots) { 
-        const stars = await Review.sum('stars', { where: { spotId: spot.id } }); 
-        const total = await Review.count({ where: { spotId: spot.id } });
-        let avg = stars / total
-        spot.avgRating = avg
-       
+    let spots = []
 
-        const previewImage = await SpotImage.findOne({ where: { spotId: spot.id } })
-        if (previewImage) spot.previewImage = previewImage.url
-       
-    }
+for (let spot of allSpots) {
+    let jsonSpot = spot.toJSON()
+    const stars = await Review.sum('stars', { where: { spotId: jsonSpot.id } });
+    const total = await Review.count({ where: { spotId: jsonSpot.id } });
+    let avg = stars / total
+    jsonSpot.avgRating = avg
 
-    return res.json({spots});
+
+    const previewImage = await SpotImage.findOne({ where: { spotId: jsonSpot.id } })
+    if (previewImage) jsonSpot.previewImage = previewImage.url
+
+    spots.push(jsonSpot)
+}
+
+return res.json({spots});
 
 })
-
-
-
-
 
 
 module.exports = router;
