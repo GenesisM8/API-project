@@ -17,11 +17,12 @@ router.get('/', async (req, res)=>{
         const stars = await Review.sum('stars', { where: { spotId: spot.id } }); 
         const total = await Review.count({ where: { spotId: spot.id } });
         let avg = stars / total
-        spot.avgRating = avg ? avg : 0;
+        spot.avgRating = avg
+       
 
         const previewImage = await SpotImage.findOne({ where: { spotId: spot.id } })
         if (previewImage) spot.previewImage = previewImage.url
-        else spot.previewImage = 'Doesnt exist';
+       
     }
 
     return res.json({spots});
