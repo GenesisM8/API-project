@@ -9,6 +9,8 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+
+
 //get all spots by current User
 router.get('/current', requireAuth, async (req, res) => {
     const allSpots = await Spot.findAll({
@@ -53,8 +55,8 @@ router.get('/:spotId', async (req, res) => {
     if (spotsById) {
         spotsById = spotsById.toJSON()
 
-    const owner = await User.findOne({
-            where: {id: spotId},
+        const owner = await User.findOne({
+            where: { id: spotId },
             attributes: ['id', 'firstName', 'lastName']
         })
         spotsById.Owner = owner;
@@ -67,7 +69,7 @@ router.get('/:spotId', async (req, res) => {
         let avg = stars / total
         spotsById.avgStarRating = avg
 
-    
+
 
     } else {
         res.status(404).json({
@@ -102,6 +104,28 @@ router.get('/', async (req, res) => {
 
 })
 
+//delete spot
+router.delete('/:spotId', requireAuth, async (req, res) => {
+  
+
+    const { user } = req;
+    const id = req.params.spotId;
+    const spot = await Spot.findByPk(id);
+
+    if (!spot) {
+        return res.status(404).json({ message: "spot couldn't be found" });
+    }
+
+    if (spot.ownerId === user.id) {
+        await spot.destroy();    
+       return res.json({ message: 'Successfully deleted' });    
+    } else{
+        return res.status(404).json({
+            message: "You are not authorized."
+
+        })
+    }
+})
 
 
 module.exports = router;
