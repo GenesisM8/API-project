@@ -168,6 +168,12 @@ router.post('/:spotId/images', requireAuth, async (req, res)=>{
         return res.status(404).json({ message: "spot couldn't be found" });
     };
 
+    if (spot.ownerId !== user.id) {
+        return res.status(401).json({
+            message: "You are not authorized to add an image to this spot"
+        })
+    };
+
     const newImage = await SpotImage.create({
         spotId: spot.id,
         url,
