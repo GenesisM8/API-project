@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Review,
         otherKey: 'userId',
         foreignKey: 'spotId',
+
       });
 
 
