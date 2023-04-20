@@ -197,18 +197,24 @@ router.post('/', validateSpot, requireAuth, async (req, res) => {
 })
 
 //edit a spot
-router.put('/:spotId', requireAuth, validateSpot, async (req, res, next) => {
+router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
     const { user } = req;
     const { address, city, state, country, lat, lng, name, description, price } = req.body
     const spot = await Spot.findByPk(req.params.spotId, {
         where: {
             ownerId: user.id
         }
-    })
+    });
 
     if (!spot) {
         return res.status(404).json({ message: "spot couldn't be found" });
-    }
+    };
+
+    if (spot.ownerId !== user.id) {
+        return res.status(401).json({
+            message: "You are not authorized to edit this spot"
+        })
+    };
 
     if (spot.ownerId === user.id) {
         if (address) { spot.address = address };
@@ -225,7 +231,6 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res, next) => {
         await spot.save()
         return res.status(200).json(spot)
     }
-
 })
 
 //delete spot
