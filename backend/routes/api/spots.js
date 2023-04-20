@@ -66,7 +66,7 @@ router.get('/current', requireAuth, async (req, res) => {
         where: { ownerId: req.user.id }
     });
 
-    let spots = []
+    let Spots = []
 
     for (let spot of allSpots) {
         let jsonSpot = spot.toJSON()
@@ -79,10 +79,10 @@ router.get('/current', requireAuth, async (req, res) => {
         const previewImage = await SpotImage.findOne({ where: { spotId: jsonSpot.id } })
         if (previewImage) jsonSpot.previewImage = previewImage.url
 
-        spots.push(jsonSpot)
+        Spots.push(jsonSpot)
     }
 
-    return res.json({ spots });
+    return res.json({ Spots });
 
 });
 
