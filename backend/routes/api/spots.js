@@ -45,7 +45,7 @@ const validateSpot = [
     check('name')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a name.')
-        .isLength({max: 50})
+        .isLength({ max: 50 })
         .withMessage('Name must be less than 50 characters.'),
 
     check('description')
@@ -154,27 +154,59 @@ router.get('/', async (req, res) => {
 })
 
 //create a spot
-router.post('/', validateSpot, requireAuth, async (req, res, next)=>{
+router.post('/', validateSpot, requireAuth, async (req, res) => {
 
-    const {address, city, state, country, lat, lng, name, description, price } = req.body
+    const { address, city, state, country, lat, lng, name, description, price } = req.body
     const newSpot = await Spot.create({
         ownerId: req.user.id,
-        address, 
-        city, 
-        state, 
-        country, 
-        lat, 
-        lng, 
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
         name,
-        description, 
+        description,
         price,
     })
- return res.status(201).json(newSpot)
+    return res.status(201).json(newSpot)
+})
+
+//edit a spot
+router.put('/:spotId', requireAuth, validateSpot, async (req, res, next) => {
+    const { user } = req;
+    const { address, city, state, country, lat, lng, name, description, price } = req.body
+    const spot = await Spot.findByPk(req.params.spotId, {
+        where: {
+            ownerId: user.id
+        }
+    })
+
+    if (!spot) {
+        return res.status(404).json({ message: "spot couldn't be found" });
+    }
+
+    if (spot.ownerId === user.id) {
+        if (address) { spot.address = address };
+        if (city) { spot.city = city };
+        if (state) { spot.state = state };
+        if (country) { spot.country = country };
+        if (lat) { spot.lat = lat };
+        if (lng) { spot.lng = lng };
+        if (name) { spot.name = name };
+        if (description) { spot.description = description };
+        if (price) { spot.price = price }
+        spot.ownerId = req.user.id,
+        
+        await spot.save()
+        return res.status(200).json(spot)
+    }
+
 })
 
 //delete spot
 router.delete('/:spotId', requireAuth, async (req, res) => {
-  
+
 
     const { user } = req;
     const id = req.params.spotId;
@@ -185,9 +217,9 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     }
 
     if (spot.ownerId === user.id) {
-        await spot.destroy();    
-       return res.json({ message: 'Successfully deleted' });    
-    } else{
+        await spot.destroy();
+        return res.json({ message: 'Successfully deleted' });
+    } else {
         return res.status(404).json({
             message: "You are not authorized."
 
