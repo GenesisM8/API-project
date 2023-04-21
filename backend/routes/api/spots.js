@@ -85,7 +85,7 @@ router.get('/current', requireAuth, async (req, res) => {
         const stars = await Review.sum('stars', { where: { spotId: jsonSpot.id } });
         const total = await Review.count({ where: { spotId: jsonSpot.id } });
         let avg = stars / total
-        jsonSpot.avgRating = avg
+        jsonSpot.avgRating = avg.toFixed(1)
 
 
         const previewImage = await SpotImage.findOne({ where: { spotId: jsonSpot.id } })
@@ -134,7 +134,7 @@ router.get('/:spotId', async (req, res) => {
         },
         include: [
             { model: SpotImage, attributes: ['id', 'url', 'preview'] },
-            // { model: User, attributes: ['id', 'firstName', 'lastName'] },
+            
         ]
     })
 
@@ -154,7 +154,7 @@ router.get('/:spotId', async (req, res) => {
         const stars = await Review.sum('stars', { where: { spotId: spotsById.id } });
         const total = await Review.count({ where: { spotId: spotsById.id } });
         let avg = stars / total
-        spotsById.avgStarRating = avg
+        spotsById.avgStarRating = avg.toFixed(1)
 
 
 

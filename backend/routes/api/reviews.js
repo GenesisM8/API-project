@@ -10,6 +10,8 @@ const { Op } = require('sequelize');
 
 const router = express.Router();
 
+
+
 //Get all reviews of the current User
 router.get('/current', requireAuth, async (req, res) => {
 
@@ -42,7 +44,7 @@ router.get('/current', requireAuth, async (req, res) => {
 
     let Reviews = []
 
-    if (reviews) { 
+    if (reviews) {
         for (let review of reviews) {
             review = review.toJSON()
 
@@ -50,7 +52,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 if (image.preview === true) {
                     review.Spot.previewImage = image.url
                     delete review.Spot.SpotImages
-                  
+
                 }
             }
 
@@ -61,6 +63,51 @@ router.get('/current', requireAuth, async (req, res) => {
     res.json({ Reviews })
 });
 
+//Add image to a Review
+router.post('/:reviewId/images', requireAuth, async (req, res) => {
+    const { user } = req;
+    const { url } = req.body;
+
+    const review = await Review.findByPk(req.params.reviewId, {
+        where: {
+            userId: user.id
+        }
+    })
+
+    if (!review) {
+        return res.status(404).json({ message: "Review couldn't be found" });
+    };
+
+    const maxCount = await ReviewImage.count({
+        where: {
+            reviewId: review.id
+        }
+    });
+
+    if (maxCount >= 10) {
+        return res.status(403).json({
+            message: "Maximum number of images for this resource was reached"
+        })
+    };
+
+    if (user.id !== review.userId) {
+        return res.status(404).json({
+            message: "You are not authorized to add an image."
+        })
+    }
+
+    const newImageReview = await ReviewImage.create({
+        url,
+        reviewId: review.id,
+    });
+    
+    return res.status(200).json(
+        {
+            id: newImageReview.id,
+            url: newImageReview.url
+        }
+    )
+});
 
 
 module.exports = router;
