@@ -93,6 +93,12 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
                 endDate: "End date conflicts with an existing booking"
             }
         });
+    };
+
+    if (booking.endDate < new Date()) {
+        return res.status(403).json({
+            message: "Past bookings can't be modified"
+        })
     }
 
     if (user.id === booking.userId) {
