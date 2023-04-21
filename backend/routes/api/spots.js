@@ -134,7 +134,7 @@ router.get('/:spotId', async (req, res) => {
         },
         include: [
             { model: SpotImage, attributes: ['id', 'url', 'preview'] },
-            
+
         ]
     })
 
@@ -327,10 +327,10 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
 
     if (spot.ownerId === user.id) {
         await spot.destroy();
-        return res.json({ message: 'Successfully deleted' });
+        return res.status(200).json({ message: 'Successfully deleted' });
     } else {
         return res.status(404).json({
-            message: "You are not authorized."
+            message: "You are not authorized to delete this spot."
 
         })
     }

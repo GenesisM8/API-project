@@ -110,7 +110,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         url,
         reviewId: review.id,
     });
-    
+
     return res.status(200).json(
         {
             id: newImageReview.id,
@@ -120,32 +120,52 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 });
 
 //Edit a review
-router.put('/:reviewId', requireAuth, validateReview, async (req, res)=>{
+router.put('/:reviewId', requireAuth, validateReview, async (req, res) => {
     const { user } = req;
-    const {review, stars} = req.body;
+    const { review, stars } = req.body;
 
     const findReview = await Review.findByPk(req.params.reviewId, {
-        where:{
-           userId: user.id 
+        where: {
+            userId: user.id
         }
     })
 
-    if(!findReview){
+    if (!findReview) {
         return res.status(404).json({ message: "Review couldn't be found" });
     };
 
-    if(findReview.userId !== user.id){
+    if (findReview.userId !== user.id) {
         return res.status(401).json({
             message: "You are not authorized to edit this review"
         })
     };
 
-    if (findReview.userId === user.id){
-        if(review){findReview.review = review};
-        if(stars){findReview.stars = stars}
+    if (findReview.userId === user.id) {
+        if (review) { findReview.review = review };
+        if (stars) { findReview.stars = stars }
 
         await findReview.save()
         return res.status(200).json(findReview)
+    }
+})
+
+router.delete('/:reviewId', requireAuth, async (req, res) => {
+    const { user } = req;
+    const id = req.params.reviewId;
+    const review = await Review.findByPk(id);
+
+    if (!review) {
+        return res.status(404).json({ message: "Review couldn't be found" });
+    }
+
+    if (review.userId === user.id) {
+        await review.destroy();
+        return res.status(200).json({ message: 'Successfully deleted' });
+    } else {
+        return res.status(404).json({
+            message: "You are not authorized to delete this review."
+
+        })
     }
 })
 
