@@ -112,6 +112,9 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
 })
 
+router.delete('/:bookingId', requireAuth, async (req, res){
+    
+})
 
 
 module.exports = router;
