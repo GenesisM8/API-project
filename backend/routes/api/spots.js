@@ -160,7 +160,7 @@ router.get('/:spotId', async (req, res) => {
 
     } else {
         res.status(404).json({
-            message: "Spot not found"
+            message: "Spot couldn't be found"
         })
     }
 
@@ -171,7 +171,7 @@ router.get('/:spotId', async (req, res) => {
 router.get('/', async (req, res) => {
     const allSpots = await Spot.findAll()
 
-    let spots = []
+    let Spots = []
 
     for (let spot of allSpots) {
         let jsonSpot = spot.toJSON()
@@ -184,10 +184,10 @@ router.get('/', async (req, res) => {
         const previewImage = await SpotImage.findOne({ where: { spotId: jsonSpot.id } })
         if (previewImage) jsonSpot.previewImage = previewImage.url
 
-        spots.push(jsonSpot)
+        Spots.push(jsonSpot)
     }
 
-    return res.json({ spots });
+    return res.json({ Spots });
 
 })
 
@@ -217,7 +217,11 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         url,
         preview
     })
-    return res.status(200).json(newImage)
+    return res.status(200).json({
+        id: newImage.id,
+        url: newImage.url,
+        preview: newImage.preview
+    })
 })
 
 //Create a Review for a Spot
