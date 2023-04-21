@@ -10,7 +10,17 @@ const { Op } = require('sequelize');
 
 const router = express.Router();
 
+const validateReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .withMessage('Review text is required'),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .isInt({ min: 1, max: 5 })
+        .withMessage('Stars must be an integer from 1 to 5'),
+    handleValidationErrors,
 
+]
 
 //Get all reviews of the current User
 router.get('/current', requireAuth, async (req, res) => {
@@ -109,5 +119,34 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     )
 });
 
+//Edit a review
+router.put('/:reviewId', requireAuth, validateReview, async (req, res)=>{
+    const { user } = req;
+    const {review, stars} = req.body;
+
+    const findReview = await Review.findByPk(req.params.reviewId, {
+        where:{
+           userId: user.id 
+        }
+    })
+
+    if(!findReview){
+        return res.status(404).json({ message: "Review couldn't be found" });
+    };
+
+    if(findReview.userId !== user.id){
+        return res.status(401).json({
+            message: "You are not authorized to edit this review"
+        })
+    };
+
+    if (findReview.userId === user.id){
+        if(review){findReview.review = review};
+        if(stars){findReview.stars = stars}
+
+        await findReview.save()
+        return res.status(200).json(findReview)
+    }
+})
 
 module.exports = router;
