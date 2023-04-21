@@ -324,13 +324,13 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     const id = req.params.spotId
     let spot = await Spot.findByPk(id)
 
-    if (!spotToEdit) {
+    if (!spot) {
         return res.status(404).json({
             message: "Spot couldn't be found"
         });
     }
 
-    if (spotToEdit.ownerId !== user.id) {
+    if (spot.ownerId !== user.id) {
         return res.status(401).json({
             message: "You are not authorized to delete this spot"
         });
