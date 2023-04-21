@@ -39,11 +39,18 @@ module.exports = {
         stars: 2,
       },
       {
-        spotId: 1,
-        userId: 2,
+        spotId: 2,
+        userId: 1,
         review: "This was ok",
         stars: 2,
       },
+      {
+        spotId: 1,
+        userId: 3,
+        review: "This was ok",
+        stars: 2,
+      },
+
     ], {})
   },
 

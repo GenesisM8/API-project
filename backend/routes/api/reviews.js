@@ -45,21 +45,18 @@ router.get('/current', requireAuth, async (req, res) => {
     if (reviews) { 
         for (let review of reviews) {
             review = review.toJSON()
+
+            for (let image of review.Spot.SpotImages) {
+                if (image.preview === true) {
+                    review.Spot.previewImage = image.url
+                    delete review.Spot.SpotImages
+                  
+                }
+            }
+
             Reviews.push(review)
         }
     }
-
-    for (let review of Reviews) {
-        for (let image of review.Spot.SpotImages) { //now we want to extract the image that is the preview image
-            if (image.preview === true) {
-                review.Spot.previewImage = image.url
-                delete review.Spot.SpotImages
-                console.log(review.Spot)
-            }
-        }
-    }
-
-
 
     res.json({ Reviews })
 });
