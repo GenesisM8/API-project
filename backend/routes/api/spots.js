@@ -338,7 +338,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
 
     if (user.id === spot.ownerId) {
-        return res.status(404).json({ message: "You can't book your own spot" });
+        return res.status(404).json({ message: "You can't book your own spot, you stay for Free!!" });
     } else {
         const newBooking = await Booking.create({
             userId: user.id,
