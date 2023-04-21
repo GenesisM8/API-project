@@ -320,27 +320,26 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
 //delete spot
 router.delete('/:spotId', requireAuth, async (req, res) => {
 
-    let { user } = req;
-    let id = req.params.spotId;
+    const { user } = req
+    const id = req.params.spotId
     let spot = await Spot.findByPk(id)
 
-    if (!spot) {
+    if (!spotToEdit) {
         return res.status(404).json({
-            "message": "Spot couldn't be found"
-        })
+            message: "Spot couldn't be found"
+        });
     }
 
-    if (user.id === spot.ownerId) {
-        await spot.destroy()
-        res.json({
-            "message": "Successfully deleted"
-        })
-    } else {
-        return res.status(404).json({
-            "message": "You are not authorized to delete this booking."
-
-        })
+    if (spotToEdit.ownerId !== user.id) {
+        return res.status(401).json({
+            message: "You are not authorized to delete this spot"
+        });
     }
+
+    await spot.destroy()
+    res.json({
+        message: "Successfully deleted"
+    })
     
 })
 
