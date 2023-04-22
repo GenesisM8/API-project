@@ -70,6 +70,43 @@ const validateReview = [
         .withMessage('Stars must be an integer from 1 to 5'),
     handleValidationErrors,
 
+];
+
+const validaFilters = [
+    check('page')
+        .optional()
+        .isInt({ min: 1 })
+        .withMessage("Page must be greater than or equal to 1"),
+    check('size')
+        .optional()
+        .isInt({ min: 1 })
+        .withMessage("Size must be greater than or equal to 1"),
+    check('minLat')
+        .optional()
+        .isFloat({ min: -90, max: 90 })
+        .withMessage('Latitude is not valid.'),
+    check('maxLat')
+        .optional()
+        .isFloat({ min: -90, max: 90 })
+        .withMessage('Latitude is not valid.'),
+    check('minLng')
+        .optional()
+        .isFloat({ min: -180, max: 180 })
+        .withMessage('Longitude is not valid.'),
+    check('maxLng')
+        .optional()
+        .isFloat({ min: -180, max: 180 })
+        .withMessage('Longitude is not valid.'),
+    check('minPrice')
+        .optional()
+        .isFloat({ min: 0 })
+        .withMessage("Minimum price must be greater than or equal to 0"),
+    check('maxPrice')
+        .optional()
+        .isFloat({ min: 0 })
+        .withMessage("Maximum price must be greater than or equal to 0"),
+    handleValidationErrors
+
 ]
 
 //get all spots by current User
@@ -200,11 +237,44 @@ router.get('/:spotId', async (req, res) => {
 });
 
 //get all spots
-router.get('/', async (req, res) => {
-    const allSpots = await Spot.findAll()
+router.get('/', validaFilters, async (req, res) => {
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+    const pagination = {
+        where: {}
+    }
+
+    if (!page || page > 10) page = 1;
+    if (!size || size > 20) size = 20;
+
+    page = parseInt(page)
+    size = parseInt(size)
+
+    pagination.limit = size;
+    pagination.offset = size * (page - 1)
+
+    if (minLat !== undefined && maxLat !== undefined) pagination.where.lat = { [Op.between]: [minLat, maxLat] };
+
+    if (minLat != undefined && maxLat == undefined) pagination.where.lat = { [Op.gte]: minLat };
+
+    if (minLat == undefined && maxLat != undefined) pagination.where.lat = { [Op.lte]: maxLat };
+
+    if (minLng != undefined && maxLng != undefined) pagination.where.lng = { [Op.between]: [minLng, maxLng] };
+
+    if (minLng != undefined && maxLng == undefined) pagination.where.lng = { [Op.gte]: minLng };
+
+    if (minLng == undefined && maxLng != undefined) pagination.where.lng = { [Op.lte]: maxLng };
+
+    if (minPrice != undefined && maxPrice != undefined) pagination.where.price = { [Op.between]: [minPrice, maxPrice] };
+
+    if (minPrice != undefined && maxPrice == undefined) pagination.where.price = { [Op.gte]: minPrice };
+
+    if (minPrice == undefined && maxPrice != undefined) pagination.where.price = { [Op.lte]: maxPrice }
+
+    const allSpots = await Spot.findAll({
+        ...pagination
+    })
 
     let Spots = []
-
     for (let spot of allSpots) {
         let jsonSpot = spot.toJSON()
         const stars = await Review.sum('stars', { where: { spotId: jsonSpot.id } });
@@ -219,7 +289,7 @@ router.get('/', async (req, res) => {
         Spots.push(jsonSpot)
     }
 
-    return res.json({ Spots });
+    return res.json({ Spots, page, size });
 
 })
 
