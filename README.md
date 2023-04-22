@@ -1,3 +1,7 @@
+
+<img width="742" alt="airbnb_dbdiagram" src="https://user-images.githubusercontent.com/116539364/233759933-139ce5d0-e0d6-42e0-b1fd-822c2056fbbf.png">
+
+
 # `AirBnB Clone`
 
 ## Database Schema Design
