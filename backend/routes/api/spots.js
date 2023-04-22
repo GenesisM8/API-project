@@ -72,7 +72,7 @@ const validateReview = [
 
 ];
 
-const validaFilters = [
+const validateFilters = [
     check('page')
         .optional()
         .isInt({ min: 1 })
@@ -237,7 +237,7 @@ router.get('/:spotId', async (req, res) => {
 });
 
 //get all spots
-router.get('/', validaFilters, async (req, res) => {
+router.get('/', validateFilters, async (req, res) => {
     let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
     const pagination = {
         where: {}
@@ -252,23 +252,18 @@ router.get('/', validaFilters, async (req, res) => {
     pagination.limit = size;
     pagination.offset = size * (page - 1)
 
-    if (minLat !== undefined && maxLat !== undefined) pagination.where.lat = { [Op.between]: [minLat, maxLat] };
 
-    if (minLat != undefined && maxLat == undefined) pagination.where.lat = { [Op.gte]: minLat };
+    if (minLat) pagination.where.lat = { [Op.gte]: minLat };
+    if (maxLat) pagination.where.lat = { [Op.lte]: maxLat };
+    if (minLng && maxLat) pagination.where.lng = { [Op.between]: [minLng, maxLng] };
 
-    if (minLat == undefined && maxLat != undefined) pagination.where.lat = { [Op.lte]: maxLat };
+    if (minLng) pagination.where.lng = { [Op.gte]: minLng };
+    if (maxLng) pagination.where.lng = { [Op.lte]: maxLng };
+    if (minLng && maxLng) pagination.where.lng = {[Op.between]: [minLng, maxLng]}
 
-    if (minLng != undefined && maxLng != undefined) pagination.where.lng = { [Op.between]: [minLng, maxLng] };
-
-    if (minLng != undefined && maxLng == undefined) pagination.where.lng = { [Op.gte]: minLng };
-
-    if (minLng == undefined && maxLng != undefined) pagination.where.lng = { [Op.lte]: maxLng };
-
-    if (minPrice != undefined && maxPrice != undefined) pagination.where.price = { [Op.between]: [minPrice, maxPrice] };
-
-    if (minPrice != undefined && maxPrice == undefined) pagination.where.price = { [Op.gte]: minPrice };
-
-    if (minPrice == undefined && maxPrice != undefined) pagination.where.price = { [Op.lte]: maxPrice }
+    if (minPrice) pagination.where.price = { [Op.gte]: minPrice };
+    if (maxPrice) pagination.where.price = { [Op.lte]: maxPrice };
+    if(minPrice && maxPrice) pagination.where.price = {[Op.between]: [minPrice, maxPrice]}
 
     const allSpots = await Spot.findAll({
         ...pagination
@@ -291,7 +286,7 @@ router.get('/', validaFilters, async (req, res) => {
 
     return res.json({ Spots, page, size });
 
-})
+});
 
 //Add an Image to a Spot
 router.post('/:spotId/images', requireAuth, async (req, res) => {
@@ -324,7 +319,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         url: newImage.url,
         preview: newImage.preview
     })
-})
+});
 
 //Create a Review for a Spot
 router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res) => {
