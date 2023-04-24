@@ -23,7 +23,6 @@ const validateSpot = [
 
     check('state')
         .exists({ checkFalsy: true })
-        .isAlpha()
         .isLength({ min: 4, max: 25 })
         .withMessage('State is required.'),
 
