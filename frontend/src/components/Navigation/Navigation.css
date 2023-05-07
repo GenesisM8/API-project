@@ -12,6 +12,7 @@
     align-items: center;
     height: 6rem;
     border-bottom: 1px solid lightgray;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .navLeft {
@@ -93,4 +94,32 @@
 
 .logoimg{
     height: 6rem;
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 5px;
+    font-style: normal;
+    font-size: 15px;
+    height: 5.5rem;
+    width: 12rem;
+   font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.logOut{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;   
+    width: 13.5rem;
+}
+
+.logOutButton{
+    border: 1px solid lightgray;
+        background-color: white;
+        box-shadow: lightgray 0px 0px 6px;
+        border-radius: 2rem;
+        width: 5rem;
+        height: 1.5rem;
 }

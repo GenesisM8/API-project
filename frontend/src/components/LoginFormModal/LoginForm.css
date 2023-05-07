@@ -1,10 +1,11 @@
 .logIn{
     display: flex;
     flex-direction: column;
-    height: 18rem;
+    height: 21rem;
     width: 27rem;
     align-items: center;
     gap: 1rem;
+    justify-content: center;
 }
 
 .formcss{
@@ -13,17 +14,48 @@
     justify-content: center;
     align-items: center;
     width: 24rem;
-    gap: 1rem;
-}
-
-.h1{
-    /* color:red */
+    gap: 0.5rem;
+    margin-top: 2px;
 }
 
 #modal-content{
 border-radius: 20px;
 }
+input{
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    height: 1.3rem;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
 
-.labelcss{
-    margin-bottom: px;
+h1{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    font-size: 25px;
+    margin-bottom: 2rem;
+}
+
+.buttonForm{
+    background-color:rgb(61, 136, 228);;
+    width: 24rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin-top:1rem ;
+   
+}
+label{
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+button:hover{
+    cursor: pointer;
+}
+
+.logerror{
+    color:red
 }
