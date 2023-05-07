@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
@@ -14,6 +14,20 @@ function SignupFormModal() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
+
+    useEffect(() => {
+        const errors = [];
+        if(username.length === 0) errors.username="";
+        if (email.length === 0) errors.email = "";
+        if(firstName.length === 0) errors.firstName ="";
+        if (lastName.length === 0) errors.lastName = "";
+        if (password.length === 0 || password.length < 6) errors.password = "";
+        if (confirmPassword.length === 0 || confirmPassword.length < 6) errors.confirmPassword = "";
+        if (username.length < 4 && username.length > 0) errors.username='username needs to be at least 4 characters.';
+        if (password.length < 6 && password.length > 0) errors.password='password needs to be at least 6 characters.';
+        
+        setErrors(errors);
+    }, [email, firstName, lastName, username, password, confirmPassword])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,12 +54,17 @@ function SignupFormModal() {
             confirmPassword: "Confirm Password field must be the same as the Password field"
         });
     };
-
+  
     return (
         <>
             <div className="signup">
                 <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit}>
+{errors.firstName && <p className="errors">{errors.firstName}</p>}
+ {errors.lastName && <p className="signError">{errors.lastName}</p>}
+ {errors.email && <p className="signError">{errors.email}</p>}
+ {errors.password && <p className="signError">{errors.password}</p>}
+{errors.username && <p className="signError">{errors.username}</p>}
 
                     <div>
                         <label>
@@ -54,20 +73,24 @@ function SignupFormModal() {
                                 type="text"
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
+                                pattern="[A-Za-z]+"
+                                title="Please enter a valid name"
                                 required
                             />
                         </label>
-                        {errors.firstName && <p className="errors">{errors.firstName}</p>}
+                        
                         <label>
                             Last Name
                             <input
                                 type="text"
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
+                                pattern="[A-Za-z]+"
+                                title="Please enter a valid last name"
                                 required
                             />
                         </label>
-                        {errors.lastName && <p className="signError">{errors.lastName}</p>}
+                       
 
                     </div>
                     <div className="labesSpace">
@@ -80,7 +103,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                        {errors.email && <p className="signError">{errors.email}</p>}
+                       
                         <label>
                             Username
                             <input
@@ -90,7 +113,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                        {errors.username && <p className="signError">{errors.username}</p>}
+                        
                     </div>
 
 
@@ -104,7 +127,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                        {errors.password && <p className="signError">{errors.password}</p>}
+                        
                         <label>
                             Confirm Password
                             <input
@@ -122,7 +145,7 @@ function SignupFormModal() {
 
 
 
-                    <button type="submit" className="signButton">Sign Up</button>
+                    <button type="submit" className="signButton" disabled={Boolean(Object.values(errors).length)}>Sign Up</button>
                 </form>
 
             </div>

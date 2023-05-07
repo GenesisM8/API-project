@@ -1,7 +1,7 @@
 .signup {
     display: flex;
     flex-direction: column;
-    height: 35rem;
+    height: 38rem;
     width: 27rem;
     align-items: center;
     justify-content: center;
@@ -27,4 +27,8 @@
 .labesSpace{
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+*:disabled{
+    background-color: rgba(61, 136, 228, 0.339);
 }
