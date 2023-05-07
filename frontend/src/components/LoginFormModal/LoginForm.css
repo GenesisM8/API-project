@@ -1,0 +1,29 @@
+.logIn{
+    display: flex;
+    flex-direction: column;
+    height: 18rem;
+    width: 27rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.formcss{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24rem;
+    gap: 1rem;
+}
+
+.h1{
+    /* color:red */
+}
+
+#modal-content{
+border-radius: 20px;
+}
+
+.labelcss{
+    margin-bottom: px;
+}
