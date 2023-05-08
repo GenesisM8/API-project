@@ -17,19 +17,20 @@ function SignupFormModal() {
 
     useEffect(() => {
         const errors = [];
-        if(username.length === 0) errors.username="";
+        if (username.length === 0) errors.username = "";
         if (email.length === 0) errors.email = "";
-        if(firstName.length === 0) errors.firstName ="";
+        if (firstName.length === 0) errors.firstName = "";
         if (lastName.length === 0) errors.lastName = "";
         if (password.length === 0 || password.length < 6) errors.password = "";
         if (confirmPassword.length === 0 || confirmPassword.length < 6) errors.confirmPassword = "";
-        if (username.length < 4 && username.length > 0) errors.username='username needs to be at least 4 characters.';
-        if (password.length < 6 && password.length > 0) errors.password='password needs to be at least 6 characters.';
-        
+        if (username.length < 4 && username.length > 0) errors.username = 'Username needs to be at least 4 characters.';
+        if (password.length < 6 && password.length > 0) errors.password = 'Password needs to be at least 6 characters.';
+
         setErrors(errors);
     }, [email, firstName, lastName, username, password, confirmPassword])
 
     const handleSubmit = (e) => {
+
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors({});
@@ -54,18 +55,19 @@ function SignupFormModal() {
             confirmPassword: "Confirm Password field must be the same as the Password field"
         });
     };
-  
     return (
         <>
             <div className="signup">
                 <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit}>
-{errors.firstName && <p className="errors">{errors.firstName}</p>}
- {errors.lastName && <p className="signError">{errors.lastName}</p>}
- {errors.email && <p className="signError">{errors.email}</p>}
- {errors.password && <p className="signError">{errors.password}</p>}
-{errors.username && <p className="signError">{errors.username}</p>}
-
+                    {errors.firstName && <p className="errors">{errors.firstName}</p>}
+                    {errors.lastName && <p className="signError">{errors.lastName}</p>}
+                    {errors.email && <p className="signError">{errors.email}</p>}
+                    {errors.password && <p className="signError">{errors.password}</p>}
+                    {errors.username && <p className="signError">{errors.username}</p>}
+                    {errors.confirmPassword && (
+                        <p className="signError">{errors.confirmPassword}</p>
+                    )}
                     <div>
                         <label>
                             First Name
@@ -78,7 +80,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                        
+
                         <label>
                             Last Name
                             <input
@@ -90,7 +92,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                       
+
 
                     </div>
                     <div className="labesSpace">
@@ -103,7 +105,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                       
+
                         <label>
                             Username
                             <input
@@ -113,7 +115,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                        
+
                     </div>
 
 
@@ -127,7 +129,7 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                        
+
                         <label>
                             Confirm Password
                             <input
@@ -137,13 +139,9 @@ function SignupFormModal() {
                                 required
                             />
                         </label>
-                        {errors.confirmPassword && (
-                            <p className="signError">{errors.confirmPassword}</p>
-                        )}
+
 
                     </div>
-
-
 
                     <button type="submit" className="signButton" disabled={Boolean(Object.values(errors).length)}>Sign Up</button>
                 </form>
