@@ -11,7 +11,8 @@ function Navigation({ isLoaded }) {
         <div className='nav'>
             <div className='navLeft'>
                 <NavLink exact to="/" className="logotext">
-                    <img className='logoimg' src='https://www.shareicon.net/data/128x128/2017/05/24/886221_media_512x512.png' alt='logo img'></img>
+                    <img className='logoimg' src='https://www.shareicon.net/data/128x128/2017/05/24/886221_media_512x512.png' 
+                    alt='logo img'></img>
                     Skybnb</NavLink>
             </div>
             <div className='navRight'>

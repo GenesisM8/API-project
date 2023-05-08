@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, NavLink } from 'react-router-dom';
-import { loadAllSpots } from '../../store/spots';
+import { NavLink } from 'react-router-dom';
+import { loadAllSpotsThunk } from '../../store/spots';
 import './SpotsIndex.css'
-import * as sessionActions from "../../store/session";
-
 
 
 function SpotsIndex() {
@@ -16,7 +13,7 @@ function SpotsIndex() {
 
 
     useEffect(() => {
-        dispatch(loadAllSpots());
+        dispatch(loadAllSpotsThunk());
     }, [dispatch])
 
     if (!spotsObj) return null;
