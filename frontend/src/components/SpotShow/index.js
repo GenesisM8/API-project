@@ -19,6 +19,7 @@ function SpotShow(){
     return(
         <>
         <h1>{spot.name}</h1>
+        <p>{spot.SpotImages}</p>
         </>
     )
 }
