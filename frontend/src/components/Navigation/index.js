@@ -7,6 +7,10 @@ import './Navigation.css';
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
 
+    const clickCreate = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <div className='nav'>
             <div className='navLeft'>
@@ -16,6 +20,7 @@ function Navigation({ isLoaded }) {
                     Skybnb</NavLink>
             </div>
             <div className='navRight'>
+                {isLoaded && sessionUser ? (<button onClick={clickCreate}><NavLink exact to='/spots/new'>Create a New Spot</NavLink></button>):null}
                 {isLoaded && (<ProfileButton user={sessionUser} />)}
             </div>
 
