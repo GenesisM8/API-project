@@ -28,13 +28,11 @@ function SpotsIndex() {
                             <NavLink key={spot.id} to={`/spots/${spot.id}`} >
                                 <img src={spot.previewImage} alt='img' className='spotIndex' />
                             </NavLink>
-                        </div>
-                        {/* <h4>{spot.name}</h4>    */}
-
-                        <div className='imgInfo'>
+                        </div> 
+                       <div className='imgInfo'>
                             <div className='middleLine'>
                                 <NavLink key={spot.id} to={`/spots/${spot.id}`} >
-                                 <p className='pText'>{spot.city}, {spot.state}</p>   
+                                 <p>{spot.city}, {spot.state}</p>   
                                 </NavLink>
                                 <p>⭐️ {spot.avgRating}</p>
                             </div>

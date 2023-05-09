@@ -1,0 +1,38 @@
+.imgShowRight{
+    width:14rem;
+    height: 13rem;
+
+}
+
+.imgShowLeft{
+    width: 29rem;
+    height: 26rem;
+    
+}
+
+.showContainer{
+    display: flex;
+    flex-direction: row;
+    /* padding: 2rem; */
+    gap: 1px;
+    justify-content: center;
+    padding-top: 1rem;
+    width: 100%;
+    
+}
+
+.fullPageShow{
+    display: flex;
+    flex-direction: column;
+    padding-left: 3rem;
+    padding-top: 2rem;
+    justify-content: center;
+}
+
+.rightContainerShow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 45rem;
+    gap: 1px;
+}

@@ -43,7 +43,15 @@ const CreateSpot = () =>{
             image4,
             image5
         };
-        let createdSpot= await dispatch(createSpotThunk(payload))
+        
+        let images = [];
+        images.push(previewImage);
+        if (image2) images.push(image2);
+        if (image3) images.push(image3);
+        if (image4) images.push(image4);
+        if (image5) images.push(image5);
+
+        let createdSpot= await dispatch(createSpotThunk(payload, images))
         if(createdSpot){
             history.push(`/spots/${createdSpot.id}`)
         }

@@ -33,11 +33,6 @@ module.exports = {
         preview: true
       },
       {
-        spotId: 1,
-        url: "https://a0.muscache.com/im/pictures/monet/Luxury-570973165437649140/original/90de688e-3961-47da-b35d-8f4bc85210e4?im_w=1440",
-        preview: true
-      },
-      {
         spotId: 2,
         url: "https://a0.muscache.com/im/pictures/monet/Luxury-54336752/original/c766376d-239c-4d1e-b8d6-7702e3e8d322?im_w=1200",
         preview: true
@@ -50,6 +45,11 @@ module.exports = {
       {
         spotId: 2,
         url: "https://a0.muscache.com/im/pictures/monet/Luxury-54336752/original/a2dff941-9172-4510-b947-30d02b3bc4bf?im_w=720",
+        preview: true
+      },
+      {
+        spotId: 2,
+        url: "https://a0.muscache.com/im/pictures/monet/Luxury-543405303250325992/original/3ee31b49-7daa-4511-b4b5-390c6ee934dd?im_w=1200",
         preview: true
       },
       {
@@ -92,26 +92,7 @@ module.exports = {
         url: "https://a0.muscache.com/im/pictures/miso/Hosting-543405303250325992/original/55b4cc01-741a-4998-a4a7-f70912174d1c.jpeg?im_w=720",
         preview: true
       },
-      {
-        spotId: 4,
-        url: "image url",
-        preview: true
-      },
-      {
-        spotId: 4,
-        url: "image url",
-        preview: true
-      },
-      {
-        spotId: 4,
-        url: "https://a0.muscache.com/im/pictures/monet/Luxury-543405303250325992/original/43b6509c-223a-481d-96bf-88687cce70b9?im_w=1200",
-        preview: true
-      },
-      {
-        spotId: 4,
-        url: "https://a0.muscache.com/im/pictures/monet/Luxury-543405303250325992/original/46641b6d-f86a-4a56-8172-e4a9c52462c7?im_w=1440",
-        preview: true
-      },
+      
     ], {})
   },
 
