@@ -48,7 +48,21 @@ const EditSpot = () => {
         if (!price || price <= 0) err.price = 'Price is required and needs to be greater than 0'
 
         setErrors(err);
+        
     }, [address, city, state, country, name, description, price])
+
+    useEffect(()=>{
+        if(spot){
+           setCountry(spot.country) 
+           setAddress(spot.address)
+           setState(spot.state)
+           setName(spot.name)
+           setDescription(spot.description)
+           setPrice(spot.price)
+           setCity(spot.city)
+        }
+        
+    },[spot])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
