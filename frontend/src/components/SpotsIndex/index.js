@@ -21,9 +21,9 @@ function SpotsIndex() {
     return (
         <>
             <div className='spotsContainer'>
-                {spots.map(spot => (
+                {spots.map((spot) => (
 
-                    <div className='singleSpotContainer'>
+                    <div className='singleSpotContainer' key={`spot/${spot.id}`}>
                         <div className='imgContainer'>
                             <NavLink key={spot.id} to={`/spots/${spot.id}`} >
                                 <img src={spot.previewImage} alt='img' className='spotIndex' />

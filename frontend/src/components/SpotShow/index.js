@@ -9,27 +9,18 @@ function SpotShow() {
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.singleSpot)
-
-    //    console.log("SPOT HERE", spot) => (It has an array of SpotImages)
+    //console.log("SPOT HERE", spot) //SpotsIages in an array of obj
 
     useEffect(() => {
         dispatch(singleSpotThunk(spotId))
     }, [dispatch, spotId])
     if (!spot) return null;
 
-    //helper function for imgs
-    const imagesRender = (images) => {
-        for (let i of images) {
-            images[i] = `img${i}`
-        }
-        return images;
-    }
-    let images = spot.SpotImages;
-    images = imagesRender(images);
+    if(!spot.SpotImages) return null;
 
-    const firstImg= images[0];
+   
+    console.log("HERE ", spot.SpotImages)
 
-    console.log("Img info here",images)
     return (
         <>
             <div className='fullPageShow'>
@@ -37,12 +28,13 @@ function SpotShow() {
                 <p>{spot.city}, {spot.state}.</p>
                 <div className='showContainer'>
                     <div>
-                    {<img key={firstImg.id} src={firstImg.url} alt='firstImg' className='imgShowLeft'/>}
+                        <img  src={spot.SpotImages[0].url} alt='firstImg' className='imgShowLeft'/>
                     </div>
                     <div className='rightContainerShow'>
-                      {images.map((image) => (
-                        <img key={image.id} src={image.url} alt='spotsImgs' className='imgShowRight'/>
-                    ))}   
+                        <img src={spot.SpotImages[1].url} alt='spotsImgs' className='imgShowRight'/>
+                        <img src={spot.SpotImages[2].url} alt='spotsImgs' className='imgShowRight' />
+                        <img src={spot.SpotImages[3].url} alt='spotsImgs' className='imgShowRight' />
+                        <img src={spot.SpotImages[1].url} alt='spotsImgs' className='imgShowRight' />
                     </div>
                    
                 </div>

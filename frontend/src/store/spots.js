@@ -4,7 +4,7 @@ import { csrfFetch } from './csrf';
 const LOAD_ALL_SPOTS = 'spots/loadAllSpots';
 const SINGLE_SPOT = 'spots/singleSpot'
 const ADD_SPOT= 'spots/addSpot'
-
+const DELETE_SPOT = 'spots/deleteSpot'
 //ACTION
 
 export const loadSpots = (allSpots) => {
@@ -25,6 +25,13 @@ export const createSpot = (singleSpot) =>{
     return{
         type:ADD_SPOT,
         singleSpot
+    }
+}
+
+export const deleteSpot = (id) => {
+    return {
+        type: DELETE_SPOT,
+        id
     }
 }
 
@@ -69,12 +76,7 @@ export const createSpotThunk = (payload, images) => async (dispatch) =>{
         header: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
-    const spotRes= await response1.json();
-    // if (response1.ok){
-    //     const newSpot = await response.json();
-    //     dispatch(createSpot(newSpot))
-    //     return newSpot
-    // }
+    const spot= await response1.json();
     // console.log("Spot res here", spotRes)
 
     //post an img
@@ -83,17 +85,28 @@ export const createSpotThunk = (payload, images) => async (dispatch) =>{
             url: i,
             preview: true
         }
-        await csrfFetch(`/api/spots/${spotRes.id}/images`, {
+        await csrfFetch(`/api/spots/${spot.id}/images`, {
             method: 'POST',
             header: { 'Content-Type': 'application/json' },
             body: JSON.stringify(imgObj)
         })
     }
-    const response2 = await csrfFetch(`/api/spots/${spotRes.id}`);
+    const response2 = await csrfFetch(`/api/spots/${spot.id}`);
     const newSpot = response2.json();
     dispatch(createSpot(newSpot))
     return newSpot
 
+}
+
+export const deleteSpotThunk = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        const deleteMessage = await response.json()
+        dispatch(deleteSpot(id));
+        return deleteMessage;
+    }
 }
 
 
@@ -108,6 +121,10 @@ const spotsReducer = (state = initialState, action) => {
             return { ...state, singleSpot: action.singleSpot };
             case ADD_SPOT:
                 return{...state, singleSpot:action.singleSpot, allSpots:action.singleSpot}
+                case DELETE_SPOT:
+                    const newState ={...state}
+                    delete newState[action.id]
+                    return newState;
         default:
             return state;
     };
