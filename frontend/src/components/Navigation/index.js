@@ -20,7 +20,7 @@ function Navigation({ isLoaded }) {
                     Skybnb</NavLink>
             </div>
             <div className='navRight'>
-                {isLoaded && sessionUser ? (<button onClick={clickCreate}><NavLink exact to='/spots/new'>Create a New Spot</NavLink></button>):null}
+                {isLoaded && sessionUser ? (<button onClick={clickCreate} className='newSpot'><NavLink exact to='/spots/new' className='newSpot'>Create a New Spot</NavLink></button>):null}
                 {isLoaded && (<ProfileButton user={sessionUser} />)}
             </div>
 

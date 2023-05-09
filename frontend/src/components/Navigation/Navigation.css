@@ -54,6 +54,7 @@
 
 .profile-dropdown-items:hover{
     cursor: pointer;
+    color:rgb(61, 136, 228);
 }
 
 .userbutton{
@@ -124,6 +125,19 @@
         height: 1.5rem;
 }
 
+.logOutButton:hover{
+    background-color: rgb(61, 136, 228);
+    color: white;
+}
+
 a:link {
+    text-decoration: none;
+}
+
+.newSpot{
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    color:rgb(61, 136, 228);
     text-decoration: none;
 }
