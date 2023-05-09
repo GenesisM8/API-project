@@ -16,11 +16,8 @@ function SpotShow() {
     }, [dispatch, spotId])
     if (!spot) return null;
 
-    if(!spot.SpotImages) return null;
-
-   
-    console.log("HERE ", spot.SpotImages)
-
+    // console.log(spot.SpotImages)
+    if(!spot.SpotImages) return null
     return (
         <>
             <div className='fullPageShow'>

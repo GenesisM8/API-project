@@ -31,15 +31,15 @@ const validateSpot = [
         .isLength({ min: 4, max: 100 })
         .withMessage('Country is required.'),
 
-    check('lat')
-        .exists({ checkFalsy: true })
-        .isFloat({ min: -90, max: 90 })
-        .withMessage('Latitude is not valid.'),
+    // check('lat')
+    //     .exists({ checkFalsy: true })
+    //     .isFloat({ min: -90, max: 90 })
+    //     .withMessage('Latitude is not valid.'),
 
-    check('lng')
-        .exists({ checkFalsy: true })
-        .isFloat({ min: -180, max: 180 })
-        .withMessage('Longitude is not valid.'),
+    // check('lng')
+    //     .exists({ checkFalsy: true })
+    //     .isFloat({ min: -180, max: 180 })
+    //     .withMessage('Longitude is not valid.'),
 
     check('name')
         .exists({ checkFalsy: true })
@@ -420,15 +420,15 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 //create a spot
 router.post('/', validateSpot, requireAuth, async (req, res) => {
 
-    const { address, city, state, country, lat, lng, name, description, price } = req.body
+    const { address, city, state, country, name, description, price } = req.body
     const newSpot = await Spot.create({
         ownerId: req.user.id,
         address,
         city,
         state,
         country,
-        lat,
-        lng,
+        // lat,
+        // lng,
         name,
         description,
         price,
@@ -439,7 +439,7 @@ router.post('/', validateSpot, requireAuth, async (req, res) => {
 //edit a spot
 router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
     const { user } = req;
-    const { address, city, state, country, lat, lng, name, description, price } = req.body
+    const { address, city, state, country, name, description, price } = req.body
     const spot = await Spot.findByPk(req.params.spotId, {
         where: {
             ownerId: user.id
@@ -461,8 +461,8 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
         if (city) { spot.city = city };
         if (state) { spot.state = state };
         if (country) { spot.country = country };
-        if (lat) { spot.lat = lat };
-        if (lng) { spot.lng = lng };
+        // if (lat) { spot.lat = lat };
+        // if (lng) { spot.lng = lng };
         if (name) { spot.name = name };
         if (description) { spot.description = description };
         if (price) { spot.price = price }

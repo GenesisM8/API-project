@@ -33,11 +33,11 @@ const dispatch= useDispatch();
     }
 
 
-    if (!spots.length) return (
-        <div>
-            <h2>There is no spots posted yet</h2>
-        </div>
-    );
+    // if (!spots.length) return (
+    //     <div>
+    //         <h2>There is no spots posted yet</h2>
+    //     </div>
+    // );
 
 
     return(
