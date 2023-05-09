@@ -51,6 +51,7 @@ const EditSpot = () => {
         
     }, [address, city, state, country, name, description, price])
 
+    //Populate the inputs with original values in the form
     useEffect(()=>{
         if(spot){
            setCountry(spot.country) 
