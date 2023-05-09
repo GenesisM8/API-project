@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSpotsCurrentThunk} from '../../store/spots';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import './ManageSpot.css';
@@ -67,6 +67,13 @@ const dispatch= useDispatch();
                                     <p>${spot.price} night</p>
                                 </div>
 
+                            </div>
+                            <div>
+                                <button onClick={clickUpdate}>
+                                    <Link key={spot.id} to={`/spots/${spot.id}/edit`}>
+                                        Update
+                                    </Link> 
+                                </button>
                             </div>
                         </div>
                         

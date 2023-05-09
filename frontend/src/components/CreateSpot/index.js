@@ -13,7 +13,7 @@ const CreateSpot = () =>{
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
     const [lat, setLat] = useState('');
-    const [lng, setLng]= useState('')
+    const [lng, setLng]= useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
