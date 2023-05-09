@@ -14,7 +14,7 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        url: "image url",
+        url: "https://hips.hearstapps.com/hmg-prod/images/top-airbnb-alternatives-2021-1613057911.jpg",
         preview: true
       },
       {

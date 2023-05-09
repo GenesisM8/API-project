@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 function SpotShow(){
     const {spotId} = useParams();
     const dispatch = useDispatch();
-    const spot= useSelector((state) => state.spots[spotId])
+    const spot= useSelector((state) => state.spots.singleSpot)
     
    
     useEffect(()=>{
@@ -19,7 +19,7 @@ function SpotShow(){
     return(
         <>
         <h1>{spot.name}</h1>
-        <p>{spot.SpotImages}</p>
+        
         </>
     )
 }

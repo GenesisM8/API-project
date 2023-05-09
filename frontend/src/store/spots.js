@@ -86,7 +86,7 @@ const spotsReducer = (state = initialState, action) => {
        case LOAD_ALL_SPOTS:
             return {...state, allSpots: {...action.allSpots}};
         case SINGLE_SPOT:
-            return{...state, [action.singleSpot.id]: action.singleSpot};
+            return { ...state, singleSpot: action.singleSpot };
             case ADD_SPOT:
                 return{...state, singleSpot:action.singleSpot, allSpots:action.singleSpot}
         default:

@@ -22,23 +22,34 @@ function SpotsIndex() {
         <>
             <div className='spotsContainer'>
                 {spots.map(spot => (
-                    <NavLink key={spot.id} to={`/spots/${spot.id}`} >
-                        <div className='singleSpotContainer'>
-                        <div>
-                          <p>{spot.previewImage}</p>  
+
+                    <div className='singleSpotContainer'>
+                        <div className='imgContainer'>
+                            <NavLink key={spot.id} to={`/spots/${spot.id}`} >
+                                <img src={spot.previewImage} alt='img' className='spotIndex' />
+                            </NavLink>
                         </div>
-                        <h4>{spot.name}</h4>   
-                        <div className='middleLine'>
-                         <p>{spot.city}, {spot.state}</p>   
-                         <p>⭐️{spot.avgRating}</p>
+                        {/* <h4>{spot.name}</h4>    */}
+
+                        <div className='imgInfo'>
+                            <div className='middleLine'>
+                                <NavLink key={spot.id} to={`/spots/${spot.id}`} >
+                                 <p className='pText'>{spot.city}, {spot.state}</p>   
+                                </NavLink>
+                                <p>⭐️ {spot.avgRating}</p>
+                            </div>
+                            <div className='lastLine'>
+                                <p>${spot.price} night</p>
+                            </div>
+
                         </div>
-                        <div>
-                            <p>${spot.price} night</p>
-                        </div>
-                        
-                        </div>
-                        
-                    </NavLink>
+
+
+
+
+                    </div>
+
+
                 ))}
 
             </div>
