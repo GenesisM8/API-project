@@ -7,6 +7,7 @@ import SpotsIndex from "./components/SpotsIndex";
 import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import SpotShow from "./components/SpotShow";
 import CreateSpot from "./components/CreateSpot";
+import CurrentUserSpots from "./components/ManageSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
       {isLoaded && <Switch>
         <Route exact path = '/'>
           <SpotsIndex/>
+        </Route>
+        <Route exact path= '/spots/current'>
+          <CurrentUserSpots/>
         </Route>
         <Route exact path= '/spots/new'>
           <CreateSpot/>

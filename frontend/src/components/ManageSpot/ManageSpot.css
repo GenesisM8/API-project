@@ -1,0 +1,23 @@
+.currentSpotContainer{
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap;
+    width: auto; */
+}
+
+
+.eachCurrentSpot{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+    justify-content: center;
+    
+   
+}
+
+.currentSpotImg{
+    width: 20rem;
+    height: 15rem;
+}

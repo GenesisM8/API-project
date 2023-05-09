@@ -43,6 +43,9 @@
     box-shadow: 2px 2px 2px 2px rgb(204, 189, 189);
     border-radius: 10px;
     padding-right: 3em;
+    position: relative;
+    top:20px;
+  
 }
 
 .profile-dropdown-items{
@@ -105,8 +108,13 @@
     font-style: normal;
     font-size: 15px;
     height: 5.5rem;
-    width: 12rem;
+    width: 13rem;
    font-family:Georgia, 'Times New Roman', Times, serif;
+   justify-content: center;
+   align-items: center;
+   padding-left: 1rem;
+   padding-top: 10px;
+  
 }
 
 .logOut{
@@ -114,6 +122,8 @@
     justify-content: flex-end;
     margin-top: 5px;   
     width: 13.5rem;
+    padding-left: 4rem;
+    margin-bottom: 1.2rem;
 }
 
 .logOutButton{
@@ -140,4 +150,17 @@ a:link {
     font-size: 16px;
     color:rgb(61, 136, 228);
     text-decoration: none;
+}
+
+.clickCss{
+    background-color: white;
+    margin-top: 0.5rem;
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-size: 15px;
+text-decoration:underline lightgray 2px ;
+        border: none;
+}
+
+.clickCss:hover{
+    color:rgb(61, 136, 228);
 }
