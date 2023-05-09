@@ -1,0 +1,28 @@
+.spotsContainer{
+    border: 1px solid red  ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 2rem;
+    justify-content: center;
+    
+}
+
+.singleSpotContainer{
+border: 1px solid green;
+width: 17rem;
+height: 18rem;
+text-decoration: none;
+
+}
+
+.middleLine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    justify-content: space-between;
+    border: 0;
+    padding: 0;
+}

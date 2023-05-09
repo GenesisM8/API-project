@@ -17,15 +17,33 @@ function SpotsIndex() {
     }, [dispatch])
 
     if (!spotsObj) return null;
-    
-    return(
-       <>
-       {spots.map(spot =>(
-           <NavLink key={spot.id} to={`/spots/${spot.id}`} >
-               <h4>{spot.name}</h4>
-           </NavLink>
-       ))}
-       </>
+
+    return (
+        <>
+            <div className='spotsContainer'>
+                {spots.map(spot => (
+                    <NavLink key={spot.id} to={`/spots/${spot.id}`} >
+                        <div className='singleSpotContainer'>
+                        <div>
+                          <p>{spot.previewImage}</p>  
+                        </div>
+                        <h4>{spot.name}</h4>   
+                        <div className='middleLine'>
+                         <p>{spot.city}, {spot.state}</p>   
+                         <p>⭐️{spot.avgRating}</p>
+                        </div>
+                        <div>
+                            <p>${spot.price} night</p>
+                        </div>
+                        
+                        </div>
+                        
+                    </NavLink>
+                ))}
+
+            </div>
+
+        </>
     )
 }
 
