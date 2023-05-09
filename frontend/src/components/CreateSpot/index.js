@@ -51,9 +51,10 @@ const CreateSpot = () =>{
 
     return(
         <>
-        <div>
-            <h1>Create a New Spot</h1>
-            <form onSubmit={handleSubmit}>
+        <div className='formContainer'>
+            
+            <form onSubmit={handleSubmit} className='formCss'>
+               <h1>Create a New Spot</h1> 
                 <div>
                     <h2>Where's your place located?</h2>
                     <p>Guests will only get your exact address once they booked a reservation.</p>
