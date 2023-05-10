@@ -6,7 +6,7 @@ import { loadAllSpotsThunk } from '../../store/spots';
 import './SpotsIndex.css'
 
 
-function SpotsIndex() {
+const SpotsIndex = () => {
     const dispatch = useDispatch();
     const spotsObj = useSelector(state => state.spots.allSpots);
     const spots = Object.values(spotsObj);
@@ -21,6 +21,7 @@ function SpotsIndex() {
     return (
         <>
             <div className='spotsContainer'>
+                
                 {spots.map((spot) => (
 
                     <div className='singleSpotContainer' key={`spot/${spot.id}`}>
@@ -44,7 +45,7 @@ function SpotsIndex() {
 
 
 
-
+                        {/* <div className='tooltip'><span className="tooltiptext">{spot.name}</span></div> */}
                     </div>
 
 

@@ -5,19 +5,21 @@ import { singleSpotThunk } from '../../store/spots'
 import './SpotShow.css'
 import { useParams } from 'react-router-dom';
 
-function SpotShow() {
+const SpotShow = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.singleSpot)
-    //console.log("SPOT HERE", spot) //SpotsIages in an array of obj
+
 
     useEffect(() => {
         dispatch(singleSpotThunk(spotId))
     }, [dispatch, spotId])
-    if (!spot) return null;
 
-    // console.log(spot.SpotImages)
-    if(!spot.SpotImages) return null
+    if (!spot) return null;
+    console.log('Here is the spot', spot)
+    if(!spot.SpotImages) return null;
+    if(!spot.Owner) return (<h1>Owner not Found...</h1>)
+
     return (
         <>
             <div className='fullPageShow'>
@@ -34,6 +36,20 @@ function SpotShow() {
                         <img src={spot.SpotImages[1].url} alt='spotsImgs' className='imgShowRight' />
                     </div>
                    
+                </div>
+                <div>
+                    <div>
+                        <h2> Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
+                        <p>{spot.description}</p>
+                    </div>
+                    <div>
+                        <div>
+                            <p>${spot.price} night</p>
+                            <p>⭐️ {spot.avgStarRating}</p>
+                            <p>{spot.numReviews}</p>
+                        </div>
+                        <button>Reserve</button>
+                    </div>
                 </div>
 
             </div>

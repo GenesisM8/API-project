@@ -12,8 +12,12 @@
     justify-content: center;
     
     width: 40rem;
-    height: 90rem;
+    /* height: 90rem; */
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding-left: 15rem;
   
+}
+
+.err{
+    color:red
 }

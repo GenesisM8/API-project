@@ -211,7 +211,7 @@ router.get('/:spotId', async (req, res) => {
         spotsById = spotsById.toJSON()
 
         const owner = await User.findOne({
-            where: { id: spotId },
+            where: { id: spotsById.ownerId },
             attributes: ['id', 'firstName', 'lastName']
         })
         spotsById.Owner = owner;
