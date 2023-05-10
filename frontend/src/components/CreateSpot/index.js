@@ -107,7 +107,7 @@ const CreateSpot = () => {
             }
         }
     }
-
+    
     return (
         <>
             <div className='formContainer'>
@@ -176,7 +176,7 @@ const CreateSpot = () => {
                                 <label>Latitude</label>
                                 <input
                                     type='text'
-                                    value={lat}
+                                    value='47.7646758'
                                     name='lat'
                                     placeholder='(optional)'
                                     onChange={(e) => setLat(e.target.value)}
@@ -186,7 +186,7 @@ const CreateSpot = () => {
                                 <label>Longitude</label>
                                 <input
                                     type='text'
-                                    value={lng}
+                                    value='-133.4530327'
                                     name='lng'
                                     placeholder='(optional)'
                                     onChange={(e) => setLng(e.target.value)}
