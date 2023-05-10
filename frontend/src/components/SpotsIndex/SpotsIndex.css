@@ -28,11 +28,12 @@ text-decoration: none;
     align-items: center;
     text-decoration: none;
     justify-content: space-between;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     height: 2.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:sans-serif;
     color: black;
+    
     
 }
 
@@ -55,19 +56,19 @@ text-decoration: none;
     position: relative;
     top: -20px;
     left: 9px;
+    padding-left: 0.5rem;
           
 }
 
 .imgInfo{
     display: flex;
     flex-direction: column;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: sans-serif;
    
 }
 
 .pText{
-    
-    font-family: Georgia, 'Times New Roman', Times, serif;
+
     color: black;
     font-size: 17px;
 }
@@ -79,4 +80,12 @@ a:link {
 
 p{
     color:black
+}
+
+p,
+h1,
+h2,
+h4,
+a {
+    font-family: sans-serif
 }

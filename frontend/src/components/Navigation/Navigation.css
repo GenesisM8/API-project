@@ -12,7 +12,7 @@
     align-items: center;
     height: 6rem;
     border-bottom: 1px solid lightgray;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: sans-serif;
 }
 
 .navLeft {
@@ -22,7 +22,7 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-   
+
 }
 
 .navRight {
@@ -37,45 +37,45 @@
 
 
 .profile-dropdown {
-  
+
     background-color: white;
     padding: 0.7rem;
     box-shadow: 2px 2px 2px 2px rgb(204, 189, 189);
     border-radius: 10px;
     padding-right: 3em;
     position: relative;
-    top:20px;
-  
+    top: 20px;
+
 }
 
-.profile-dropdown-items{
-   
+.profile-dropdown-items {
+
     display: flex;
     flex-direction: column;
     padding: 5px;
 }
 
-.profile-dropdown-items:hover{
+.profile-dropdown-items:hover {
     cursor: pointer;
-    color:rgb(61, 136, 228);
+    color: rgb(61, 136, 228);
 }
 
-.userbutton{
+.userbutton {
     height: 3rem;
     width: 6rem;
     border-radius: 2rem;
     border: 1px solid lightgray;
     background-color: white;
     box-shadow: lightgray 0px 0px 6px;
-    
+
 }
 
-.userbutton :hover{
+.userbutton :hover {
     cursor: pointer;
 }
 
-.userFa{
-    color:rgb(96, 95, 95);
+.userFa {
+    color: rgb(96, 95, 95);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -83,24 +83,24 @@
     align-items: center;
 }
 
-.logotext{
+.logotext {
     display: flex;
     flex-direction: row;
-    color:rgb(61, 136, 228);
+    color: rgb(61, 136, 228);
     text-decoration: none;
     justify-content: center;
     align-items: center;
     font-size: 1.7rem;
     font-weight: 800;
-    font-family:Arial, Helvetica, sans-serif;
-    
+    font-family: sans-serif;
+
 }
 
-.logoimg{
+.logoimg {
     height: 6rem;
 }
 
-.userInfo{
+.userInfo {
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -109,33 +109,33 @@
     font-size: 15px;
     height: 5.5rem;
     width: 13rem;
-   font-family:Georgia, 'Times New Roman', Times, serif;
-   justify-content: center;
-   align-items: center;
-   padding-left: 1rem;
-   padding-top: 10px;
-  
+    font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+    padding-top: 10px;
+
 }
 
-.logOut{
+.logOut {
     display: flex;
     justify-content: flex-end;
-    margin-top: 5px;   
+    margin-top: 5px;
     width: 13.5rem;
     padding-left: 4rem;
     margin-bottom: 1.2rem;
 }
 
-.logOutButton{
+.logOutButton {
     border: 1px solid lightgray;
-        background-color: white;
-        box-shadow: lightgray 0px 0px 6px;
-        border-radius: 2rem;
-        width: 5rem;
-        height: 1.5rem;
+    background-color: white;
+    box-shadow: lightgray 0px 0px 6px;
+    border-radius: 2rem;
+    width: 5rem;
+    height: 1.5rem;
 }
 
-.logOutButton:hover{
+.logOutButton:hover {
     background-color: rgb(61, 136, 228);
     color: white;
 }
@@ -144,23 +144,23 @@ a:link {
     text-decoration: none;
 }
 
-.newSpot{
+.newSpot {
     background-color: white;
     border: none;
     font-size: 16px;
-    color:rgb(61, 136, 228);
+    color: rgb(61, 136, 228);
     text-decoration: none;
 }
 
-.clickCss{
+.clickCss {
     background-color: white;
     margin-top: 0.5rem;
-font-family: Georgia, 'Times New Roman', Times, serif;
-font-size: 15px;
-text-decoration:underline lightgray 2px ;
-        border: none;
+   font-family: sans-serif;
+    font-size: 15px;
+    text-decoration: underline lightgray 2px;
+    border: none;
 }
 
-.clickCss:hover{
-    color:rgb(61, 136, 228);
+.clickCss:hover {
+    color: rgb(61, 136, 228);
 }

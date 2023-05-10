@@ -20,28 +20,24 @@ const dispatch= useDispatch();
     }, [dispatch])
 
     if (!spots) {return null }
-
-    const clickUpdate = (e) => {
-        e.preventDefault();
-    }
-    const clickCreate = (e) => {
-        e.preventDefault();
-    }
-
+  
     return(
         <>
-        <div>
             <div>
+            <div className='manageContainer'>
                <h1>Manage Your Spots</h1>  
-                    <button onClick={clickCreate}><NavLink exact to='/spots/new'>Create a New Spot
-                        </NavLink></button>
+                    <NavLink exact to='/spots/new'>
+                    <button className='manageButton'>Create a New Spot</button>
+                    </NavLink>
+
             </div>
             <div className='currentSpotContainer'>
                     <div className='eachCurrentSpot'>
                     {spots.map((spot)=>(
                         <div  key={`${spot.id}`}>
-                            <p>{spot.name}</p>
+                            
                             <NavLink key={spot.id} to={`/spots/${spot.id}`}>
+                              <p className='manageNames'>{spot.name}</p>  
                             <img src={spot.previewImage} alt={spot.name} className='currentSpotImg'/> 
                             </NavLink>
                             <div className='imgInfo'>
@@ -51,22 +47,26 @@ const dispatch= useDispatch();
                                     </NavLink>
                                     <p>⭐️ {spot.avgRating}</p>
                                 </div>
-                                <div className='lastLine'>
+                                <div className='lastLine2'>
                                     <p>${spot.price} night</p>
                                 </div>
-
-                            </div>
-                            <div>
-                                <button onClick={clickUpdate}>
-                                    <Link key={spot.id} to={`/spots/${spot.id}/edit`}>
-                                        Update
-                                    </Link> 
-                                </button>
-                                <OpenModalButton
+                                    <div className='manageLastContainer'>
+                                    
+                                    <Link key={spot.id} to={`/spots/${spot.id}/edit`} >
+                                      <button className='manageLastButtons'>Update</button>
+                                        </Link> 
+                                <div>
+ <OpenModalButton
                                 buttonText='Delete'
                                 modalComponent={<DeleteModal spot={spot}/>}
                                 />
+
+                                </div>
+                               
                             </div>
+
+                            </div>
+                        
                         </div>
                         
                     ))}

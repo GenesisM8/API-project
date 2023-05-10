@@ -1,7 +1,7 @@
 .logIn{
     display: flex;
     flex-direction: column;
-    height: 22rem;
+    height: 23rem;
     width: 27rem;
     align-items: center;
     gap: 1rem;
@@ -47,7 +47,7 @@ h1{
     border: none;
     color: white;
     font-size: 1rem;
-    margin-top:1rem ;
+    /* margin-top:1rem ; */
    
 }
 label{
@@ -67,4 +67,11 @@ button:hover{
 
 *:disabled {
     background-color: rgba(61, 136, 228, 0.339);
+}
+
+.buttonsContainer{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    margin-top: 1rem;
 }
