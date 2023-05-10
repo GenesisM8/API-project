@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createSpotThunk } from '../../store/spots';
 import './CreateSpot.css'
 
-const CreateSpot = () =>{
+const CreateSpot = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -13,11 +13,11 @@ const CreateSpot = () =>{
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
     const [lat, setLat] = useState('');
-    const [lng, setLng]= useState('');
+    const [lng, setLng] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [previewImage, setPreviewImage]=useState('');
+    const [previewImage, setPreviewImage] = useState('');
     const [image2, setImage2] = useState('');
     const [image3, setImage3] = useState('');
     const [image4, setImage4] = useState('');
@@ -39,10 +39,10 @@ const CreateSpot = () =>{
         if (!previewImage && !previewImage.includes('.png') &&
             !previewImage.includes('.jpg') &&
             !previewImage.includes('.jpeg')) err.image1 = 'Image URL must end in .png, .jpg, or .jpeg'
-        if(!image2.length) err.img ='Image requiere'
-        if (!image3.length) err.img = 'Image requiere'
-        if (!image4.length) err.img = 'Image requiere'
-        if (!image5.length) err.img = 'Image requiere'
+        if (!image2.length) err.img2 = 'Image requiere'
+        if (!image3.length) err.img3 = 'Image requiere'
+        if (!image4.length) err.img4 = 'Image requiere'
+        if (!image5.length) err.img5 = 'Image requiere'
         if (image2 && !image2.includes('.png') &&
             !image2.includes('.jpg') &&
             !image2.includes('.jpeg')) err.image2 = 'Image URL must end in .png, .jpg, or .jpeg'
@@ -58,14 +58,12 @@ const CreateSpot = () =>{
         setErrors(err);
     }, [address, city, state, country, name, description, price, previewImage, image2, image3, image4, image5])
 
-
-
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
         await setHasSubmitted(true);
         await setResErrors({});
 
-        const payload={
+        const payload = {
             address,
             city,
             state,
@@ -76,7 +74,7 @@ const CreateSpot = () =>{
             description,
             price,
         };
-        
+
         let images = [];
         images.push(previewImage);
         if (image2) images.push(image2);
@@ -84,224 +82,237 @@ const CreateSpot = () =>{
         if (image4) images.push(image4);
         if (image5) images.push(image5);
 
-        if(!Boolean(Object.values(errors).length)){
+        //    const reset = () => {
+        //             setAddress('');
+        //             setCity('');
+        //             setState('');
+        //             setCountry('');
+        //             setName('');
+        //             setDescription('');
+        //             setPrice(0);
+        //             setErrors([]);
+        //             setResErrors({});
+        //             setHasSubmitted(false);
+        //         };
 
-           let createdSpot= await dispatch(createSpotThunk(payload, images))
-            if (!createdSpot.errors){
-            history.push(`/spots/${createdSpot.id}`)
-        }  else{
-            await setResErrors(createdSpot.error)
-        }
-        }
 
-       
+        if (!Boolean(Object.values(errors).length)) {
+            let createdSpot = await dispatch(createSpotThunk(payload, images))
+            if (!createdSpot.errors) {
+                history.push(`/spots/${createdSpot.id}`)
+                //  await reset()
+            } else {
+                await setResErrors(createdSpot.error)
+
+            }
+        }
     }
 
-    return(
+    return (
         <>
-        <div className='formContainer'>
-            
-            <form onSubmit={handleSubmit} className='formCss'>
-               <h1>Create a New Spot</h1> 
+            <div className='formContainer'>
+
+                <form onSubmit={handleSubmit} className='formCss'>
+                    <h1>Create a New Spot</h1>
                     {hasSubmitted && Boolean(Object.values(resErrors).length) ? <li>{Object.values(resErrors)}</li> : null}
-                <div>
-                    <h2>Where's your place located?</h2>
-                    <p>Guests will only get your exact address once they booked a reservation.</p>
-                </div>
-                <div>
                     <div>
-                        <label>Country</label>
-                         <input
-                        type='text'
-                        name='country'
-                        value={country}
-                        onChange={(e)=>setCountry(e.target.value)}
-                        ></input>
-                            {hasSubmitted ?
-                                <p>{errors.country}</p> : null
-                            }
-                    </div>
-                    <div>
-                        <label>Stree Address</label>
-                        <input
-                        type='text'
-                        name='address'
-                        value={address}
-                        onChange={(e)=>setAddress(e.target.value)}
-                        ></input>
-                            {hasSubmitted ?
-                                <p>{errors.address}</p> : null
-                            }
+                        <h2>Where's your place located?</h2>
+                        <p>Guests will only get your exact address once they booked a reservation.</p>
                     </div>
                     <div>
                         <div>
-                         <label>City</label>
-                         <input
+                            <label>Country</label>
+                            <input
+                                type='text'
+                                name='country'
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                            ></input>
+                            {hasSubmitted ?
+                                <p className='err'>{errors.country}</p> : null
+                            }
+                        </div>
+                        <div>
+                            <label>Stree Address</label>
+                            <input
+                                type='text'
+                                name='address'
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                            ></input>
+                            {hasSubmitted ?
+                                <p className='err'>{errors.address}</p> : null
+                            }
+                        </div>
+                        <div>
+                            <div>
+                                <label>City</label>
+                                <input
                                     type='text'
                                     name='city'
                                     value={city}
                                     onChange={(e) => setCity(e.target.value)}
-                         ></input>
+                                ></input>
                                 {hasSubmitted ?
-                                    <p>{errors.city}</p> : null
+                                    <p className='err'>{errors.city}</p> : null
                                 }
-                        </div>
-                        <div>
-                            <label>State</label>
-                            <input
-                            type='text'
-                            name='state'
-                            value={state}
-                            onChange={(e)=>setState(e.target.value)}
-                            ></input>
+                            </div>
+                            <div>
+                                <label>State</label>
+                                <input
+                                    type='text'
+                                    name='state'
+                                    value={state}
+                                    onChange={(e) => setState(e.target.value)}
+                                ></input>
                                 {hasSubmitted ?
-                                    <p>{errors.state}</p> : null
+                                    <p className='err'>{errors.state}</p> : null
                                 }
-                        </div>
+                            </div>
 
-                    </div>
-                    <div>
-                        <div>
-                            <label>Latitude</label>
-                            <input
-                            type='text'
-                            value={lat}
-                            name='lat'
-                            placeholder='(optional)'
-                            onChange={(e)=> setLat(e.target.value)}
-                            ></input>
                         </div>
                         <div>
-                            <label>Longitude</label>
-                            <input
-                            type='text'
-                            value={lng}
-                            name='lng'
-                            placeholder='(optional)'
-                            onChange={(e)=> setLng(e.target.value)}
-                            ></input>
+                            <div>
+                                <label>Latitude</label>
+                                <input
+                                    type='text'
+                                    value={lat}
+                                    name='lat'
+                                    placeholder='(optional)'
+                                    onChange={(e) => setLat(e.target.value)}
+                                ></input>
+                            </div>
+                            <div>
+                                <label>Longitude</label>
+                                <input
+                                    type='text'
+                                    value={lng}
+                                    name='lng'
+                                    placeholder='(optional)'
+                                    onChange={(e) => setLng(e.target.value)}
+                                ></input>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <h2>Describe your place to guests</h2>
-                    <p>Mention the best features of your space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</p>
                     <div>
-                        <textarea
-                        value={description}
-                        name='description'
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder='Please write at least 30 character'
+                        <h2>Describe your place to guests</h2>
+                        <p>Mention the best features of your space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</p>
+                        <div>
+                            <textarea
+                                value={description}
+                                name='description'
+                                onChange={(e) => setDescription(e.target.value)}
+                                placeholder='Please write at least 30 character'
                                 rows='8'
                                 cols='50'
-                        ></textarea>
+                            ></textarea>
                             {hasSubmitted ?
-                                <p>{errors.description}</p> : null
+                                <p className='err'>{errors.description}</p> : null
                             }
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h2>Create a title for your spot</h2>
-                    <p>Catch guests' attention with a spot title that highlights what makes your place special.</p>
-                    <input
-                    type='text'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    name='name'
-                    placeholder='Name of your spot'
-                    ></input>
+                    <div>
+                        <h2>Create a title for your spot</h2>
+                        <p>Catch guests' attention with a spot title that highlights what makes your place special.</p>
+                        <input
+                            type='text'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            name='name'
+                            placeholder='Name of your spot'
+                        ></input>
                         {hasSubmitted ?
-                            <p className=''>{errors.name}</p> : null
+                            <p className='err'>{errors.name}</p> : null
                         }
-                </div>
-                <div>
-                    <h2>Set a base price for your spot</h2>
-                    <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
-                    <div>
-                        <p>$</p>
-                        <input
-                        value={price}
-                        name='price'
-                        placeholder='Price per night (USD)'
-                        pattern="^\$?[0-9]+(\.[0-9]{2})?$"
-                        onChange={(e) => setPrice(e.target.value)}
-                        ></input>
-                            {hasSubmitted ?
-                                <p>{errors.price}</p> : null
-                            }
                     </div>
-                </div>
-               
-                <div>
-                    <h2>Liven up your spot with photos</h2>
-                    <p>Submit a link to at least one photo to publish your spot.</p>
                     <div>
-                        <input
-                        type='text'
-                        placeholder='Preview Image URL'
-                        value={previewImage}
-                        onChange={(e)=>setPreviewImage(e.target.value)}
-                        ></input>
+                        <h2>Set a base price for your spot</h2>
+                        <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
+                        <div>
+                            <p>$</p>
+                            <input
+                                value={price}
+                                name='price'
+                                placeholder='Price per night (USD)'
+                                pattern="^\$?[0-9]+(\.[0-9]{2})?$"
+                                onChange={(e) => setPrice(e.target.value)}
+                            ></input>
                             {hasSubmitted ?
-                                <p>{errors.previewImage}</p> : null
+                                <p className='err'>{errors.price}</p> : null
+                            }
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2>Liven up your spot with photos</h2>
+                        <p>Submit a link to at least one photo to publish your spot.</p>
+                        <div>
+                            <input
+                                type='text'
+                                placeholder='Preview Image URL'
+                                value={previewImage}
+                                onChange={(e) => setPreviewImage(e.target.value)}
+                            ></input>
+                            {hasSubmitted ?
+                                <p className='err'>{errors.previewImage}</p> : null
                             }
                             {hasSubmitted ?
-                                <p>{errors.imageMin}</p> : null
+                                <p className='err'>{errors.imageMin}</p> : null
                             }
-                        <input
+                            <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image2}
                                 onChange={(e) => setImage2(e.target.value)}
-                        ></input>
+                            ></input>
                             {hasSubmitted ?
-                                <p>{errors.image2}</p> : null
+                                <p className='err'>{errors.image2}</p> : null
                             }
                             {hasSubmitted ?
-                                <p>{errors.img}</p> : null
+                                <p className='err'>{errors.img2}</p> : null
                             }
-                        <input
+                            <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image3}
                                 onChange={(e) => setImage3(e.target.value)}
-                        ></input>
+                            ></input>
                             {hasSubmitted ?
-                                <p>{errors.image3}</p> : null
+                                <p className='err'>{errors.image3}</p> : null
                             }
                             {hasSubmitted ?
-                                <p>{errors.img}</p> : null
+                                <p className='err'>{errors.img3}</p> : null
                             }
-                        <input
+                            <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image4}
                                 onChange={(e) => setImage4(e.target.value)}
-                        ></input>
+                            ></input>
                             {hasSubmitted ?
-                                <p>{errors.image4}</p> : null
+                                <p className='err'>{errors.image4}</p> : null
 
                             }
                             {hasSubmitted ?
-                                <p>{errors.img}</p> : null
+                                <p className='err'>{errors.img4}</p> : null
                             }
-                        <input
+                            <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image5}
                                 onChange={(e) => setImage5(e.target.value)}
-                        ></input>
+                            ></input>
                             {hasSubmitted ?
-                                <p>{errors.image5}</p> : null
+                                <p className='err'>{errors.image5}</p> : null
                             }
                             {hasSubmitted ?
-                                <p>{errors.img}</p> : null
+                                <p className='err'>{errors.img5}</p> : null
                             }
+                        </div>
                     </div>
-                </div>
                     <button type='submit'>Create Spot</button>
-            </form>
-        </div>
+                </form>
+            </div>
         </>
     )
 }
