@@ -3,6 +3,7 @@ import { useDispatch} from 'react-redux';
 import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import { deleteSpotThunk,loadSpotsCurrentThunk } from '../../store/spots';
+import './DeleteSpot.css'
 
 function DeleteSpot ({spot}){
 const dispatch= useDispatch();
@@ -24,15 +25,15 @@ const clickNo = async (e) =>{
 
 return(
     <>
-    <div>
-        <div>
-           <h1>Confirm Delete</h1>
-        <p>Are you sure you want to remove this spot from the listing?</p>  
+    <div className='mainContainer'> 
+        <div className='deleteText'>
+           <h1 className='h1Delete'>Confirm Delete</h1>
+        <p className='pDelete'>Are you sure you want to remove this spot from the listing?</p>  
         </div>
-       <div>
-        <button onClick={clickYes}>Yes (Delete Spot)</button>
+       <div className='YN'>
+        <button onClick={clickYes} className='Ybutton'>Yes (Delete Spot)</button>
 
-        <button onClick={clickNo}>NO (Keep Spot)</button>
+        <button onClick={clickNo} className='Nbutton'>NO (Keep Spot)</button>
        </div>
 
     </div>
