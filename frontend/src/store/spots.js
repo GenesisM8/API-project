@@ -133,14 +133,15 @@ export const editSpotThunk = (payload) => async (dispatch) => {
     
 }
 
+//delete Spot
 export const deleteSpotThunk = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${id}`, {
         method: 'DELETE'
     })
     if (response.ok) {
-        const deleteMessage = await response.json()
+        const deletedSpot = await response.json()
         dispatch(deleteSpot(id));
-        return deleteMessage;
+        return deletedSpot;
     }
 }
 

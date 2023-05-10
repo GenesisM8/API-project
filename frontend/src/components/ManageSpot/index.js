@@ -2,17 +2,15 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSpotsCurrentThunk} from '../../store/spots';
 import { NavLink, Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import './ManageSpot.css';
-import CreateSpot from '../CreateSpot';
-// import DeleteModal from '../DeleteSpotModal';
-// import OpenModalButton from '../OpenModalButton/index'
+import DeleteModal from '../DeleteSpot';
+import OpenModalButton from '../OpenModalButton/index'
 
 
 const CurrentUserSpots = () =>{
 const dispatch= useDispatch();
-// const history = useHistory();
+
     const spotsObj = useSelector(state => state.spots.currentSpots);
     let spots = [];
     spots = Object.values(spotsObj);
@@ -21,9 +19,7 @@ const dispatch= useDispatch();
         dispatch(loadSpotsCurrentThunk());
     }, [dispatch])
 
-    if (!spots) {
-       return null || <h2> Need to Log in too see spots</h2>
-    }
+    if (!spots) {return null }
 
     const clickUpdate = (e) => {
         e.preventDefault();
@@ -31,14 +27,6 @@ const dispatch= useDispatch();
     const clickCreate = (e) => {
         e.preventDefault();
     }
-
-
-    // if (!spots.length) return (
-    //     <div>
-    //         <h2>There is no spots posted yet</h2>
-    //     </div>
-    // );
-
 
     return(
         <>
@@ -74,6 +62,10 @@ const dispatch= useDispatch();
                                         Update
                                     </Link> 
                                 </button>
+                                <OpenModalButton
+                                buttonText='Delete'
+                                modalComponent={<DeleteModal spot={spot}/>}
+                                />
                             </div>
                         </div>
                         
