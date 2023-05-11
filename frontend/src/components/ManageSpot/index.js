@@ -46,7 +46,11 @@ const dispatch= useDispatch();
                                     <NavLink key={spot.id} to={`/spots/${spot.id}`} >
                                         <p>{spot.city}, {spot.state}</p>
                                     </NavLink>
-                                    <p>⭐️ {spot.avgRating}</p>
+                                
+                                    <div> {spot.avgRating === "NaN" ? "New" : <div>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <p>{spot.avgRating}</p>
+                                        </div>}</div>
                                 </div>
                                 <div className='lastLine2'>
                                     <p>${spot.price} night</p>

@@ -35,7 +35,10 @@ const SpotsIndex = () => {
                                 <NavLink key={spot.id} to={`/spots/${spot.id}`} >
                                  <p>{spot.city}, {spot.state}</p>   
                                 </NavLink>
-                                <p>⭐️ {spot.avgRating}</p>
+                               
+                                <div> {!spot.avgRating ? "New" : <div>
+                                    <p>⭐️ {spot.avgRating}</p>
+                                </div>}</div>
                             </div>
                             <div className='lastLine'>
                                 <p>${spot.price} night</p>
