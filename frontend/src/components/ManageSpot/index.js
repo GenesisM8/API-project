@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadSpotsCurrentThunk} from '../../store/spots';
+import { loadSpotsCurrentThunk, clearSpotsAction} from '../../store/spots';
 import { NavLink, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import './ManageSpot.css';
@@ -17,6 +17,7 @@ const dispatch= useDispatch();
 
     useEffect(() => {
         dispatch(loadSpotsCurrentThunk());
+        return (() => dispatch(clearSpotsAction()))
     }, [dispatch])
 
     if (!spots) {return null }
