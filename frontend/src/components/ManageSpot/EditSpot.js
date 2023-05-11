@@ -39,12 +39,12 @@ const EditSpot = () => {
 
     useEffect(() => {
         const err = {};
-        if (!address.length) err.address = 'Address is required'
-        if (!city.length) err.city = 'City is required'
-        if (!state.length) err.state = 'State is required'
-        if (!country.length) err.country = 'Country is required'
-        if (description.length < 30) err.description = 'Description needs a minimum of 30 characters'
-        if (!name.length) err.name = 'Name is required'
+        if (!address) err.address = 'Address is required'
+        if (!city) err.city = 'City is required'
+        if (!state) err.state = 'State is required'
+        if (!country) err.country = 'Country is required'
+        if (!description || description.length < 30) err.description = 'Description needs a minimum of 30 characters'
+        if (!name) err.name = 'Name is required'
         if (!price || price <= 0) err.price = 'Price is required and needs to be greater than 0'
 
         setErrors(err);
@@ -89,6 +89,8 @@ const EditSpot = () => {
         }
     }
 
+    if (!spot) return (
+        <h1>No spots found</h1>);
 
     return (
         <>

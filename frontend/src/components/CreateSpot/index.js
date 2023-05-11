@@ -82,25 +82,12 @@ const CreateSpot = () => {
         if (image4) images.push(image4);
         if (image5) images.push(image5);
 
-        //    const reset = () => {
-        //             setAddress('');
-        //             setCity('');
-        //             setState('');
-        //             setCountry('');
-        //             setName('');
-        //             setDescription('');
-        //             setPrice(0);
-        //             setErrors([]);
-        //             setResErrors({});
-        //             setHasSubmitted(false);
-        //         };
 
 
         if (!Boolean(Object.values(errors).length)) {
             let createdSpot = await dispatch(createSpotThunk(payload, images))
             if (!createdSpot.errors) {
                 history.push(`/spots/${createdSpot.id}`)
-                //  await reset()
             } else {
                 await setResErrors(createdSpot.error)
 
