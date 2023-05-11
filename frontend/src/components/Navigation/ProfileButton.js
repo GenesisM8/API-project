@@ -47,6 +47,11 @@ function ProfileButton({ user }) {
         closeMenu();
     }
 
+    const reviewClick = (e)=>{
+        e.preventDefault();
+        history.push('/reviews/current')
+        closeMenu()
+    }
     const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
     return (
@@ -68,6 +73,7 @@ function ProfileButton({ user }) {
                             </div>
                             <div>
                             <button onClick={spotsClick} className="clickCss">Manage Spots</button>
+                            <button onClick={reviewClick} className="clickCss">Manage Reviews</button>
                             </div>
                            <div className="logOut">
                              <button className="logOutButton" onClick={logout}>Log Out</button>

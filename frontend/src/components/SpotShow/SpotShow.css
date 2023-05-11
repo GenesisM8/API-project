@@ -36,3 +36,44 @@
     width: 45rem;
     gap: 1px;
 }
+
+.spotDetails{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+}
+
+.hostedText{
+    width: 50rem;
+    height: 10rem;
+}
+
+.reserveContainer{
+display: flex;
+flex-direction: column;
+border: 2px solid black;
+width: 21rem;
+height: 8rem;
+margin-left: 2rem;
+}
+
+.priceInfo{
+    display: flex;
+    flex-direction: row;
+    width: 19rem;
+    gap: 7rem;
+}
+
+.number{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+ 
+}
+
+.pushLeft{
+   padding-left: 1.5rem;
+   display: flex;
+   flex-direction: row;
+   width: 5rem;
+}

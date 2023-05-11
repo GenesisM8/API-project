@@ -44,7 +44,7 @@
     border-radius: 10px;
     padding-right: 3em;
     position: relative;
-    top: 20px;
+    top: 45px;
 
 }
 
@@ -107,13 +107,14 @@
     gap: 5px;
     font-style: normal;
     font-size: 15px;
-    height: 5.5rem;
+    height: 7rem;
     width: 13rem;
     font-family: sans-serif;
     justify-content: center;
     align-items: center;
     padding-left: 1rem;
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 5px;
 
 }
 
@@ -124,6 +125,7 @@
     width: 13.5rem;
     padding-left: 4rem;
     margin-bottom: 1.2rem;
+    padding-bottom: 5px;
 }
 
 .logOutButton {
@@ -133,6 +135,7 @@
     border-radius: 2rem;
     width: 5rem;
     height: 1.5rem;
+   
 }
 
 .logOutButton:hover {

@@ -148,7 +148,7 @@ export const deleteSpotThunk = (id) => async (dispatch) => {
 
 
 //reducer
-const initialState = { allSpots: {}, currentSpots: {}, };
+const initialState = { allSpots: {}, currentSpots: {}, singleSpot:{} };
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_ALL_SPOTS:
@@ -167,8 +167,6 @@ const spotsReducer = (state = initialState, action) => {
         default:
             return state;
     };
-
-
 }
 
 export default spotsReducer;

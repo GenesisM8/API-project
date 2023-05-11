@@ -9,6 +9,7 @@ import SpotShow from "./components/SpotShow";
 import CreateSpot from "./components/CreateSpot";
 import CurrentUserSpots from "./components/ManageSpot";
 import EditSpot from "./components/ManageSpot/EditSpot";
+import CurrentUserReviews from "./components/ManageReview";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route exact path = '/spots/:spotId'>
           <SpotShow/>
+        </Route>
+        <Route exact path= '/reviews/current'>
+          <CurrentUserReviews/>
         </Route>
         </Switch>}
     </>
