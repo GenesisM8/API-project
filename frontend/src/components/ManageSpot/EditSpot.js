@@ -20,8 +20,8 @@ const EditSpot = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState('');
+    // const [lat, setLat] = useState('');
+    // const [lng, setLng] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
@@ -74,8 +74,8 @@ const EditSpot = () => {
             city,
             state,
             country,
-            lat,
-            lng,
+            // lat,
+            // lng,
             name,
             description,
             price
@@ -145,7 +145,7 @@ const EditSpot = () => {
                             ></input>
                         </div>
                     </div>
-                    <div>
+                    {/* <div>
                         <div>
                             <label>Latitude</label>
                             <input
@@ -166,7 +166,7 @@ const EditSpot = () => {
                                 onChange={(e) => setLng(e.target.value)}
                             ></input>
                         </div>
-                    </div>
+                    </div> */}
                     <div>
                         <h2>Describe your place to guests</h2>
                         <p>Mention the best features of your space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</p>

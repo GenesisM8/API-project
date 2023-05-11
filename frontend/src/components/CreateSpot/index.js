@@ -12,8 +12,8 @@ const CreateSpot = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState('');
+    // const [lat, setLat] = useState('');
+    // const [lng, setLng] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -68,8 +68,8 @@ const CreateSpot = () => {
             city,
             state,
             country,
-            lat,
-            lng,
+            // lat,
+            // lng,
             name,
             description,
             price,
@@ -158,7 +158,7 @@ const CreateSpot = () => {
                             </div>
 
                         </div>
-                        <div>
+                        {/* <div>
                             <div>
                                 <label>Latitude</label>
                                 <input
@@ -179,7 +179,7 @@ const CreateSpot = () => {
                                     onChange={(e) => setLng(e.target.value)}
                                 ></input>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div>
                         <h2>Describe your place to guests</h2>
