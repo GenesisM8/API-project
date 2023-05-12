@@ -71,7 +71,7 @@ function LoginFormModal() {
                         </label>
                         <div className="buttonsContainer">
                           <button type="submit" className="buttonForm" disabled={Boolean(Object.values(errors).length)}>Log In</button>
-                        <button type="submit" className="buttonForm" onClick={demoUser}>Demo User</button>  
+                            <button type="submit" className="demoButton" onClick={demoUser}>Demo User</button>  
                         </div>                        
                     </form>
                 </div>
