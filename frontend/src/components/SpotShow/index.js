@@ -7,6 +7,7 @@ import './SpotShow.css'
 import { useParams } from 'react-router-dom';
 import OpenModalButton from '../OpenModalButton/index'
 import CreateReviewModal from "../CreateReview";
+import DeleteReviewModal from '../DeleteReview';
 
 const SpotShow = () => {
     const { spotId } = useParams();
@@ -32,8 +33,13 @@ const SpotShow = () => {
                 return false;
         }
         if (user.id === spot.ownerId) return false;// => You can't write a review for your own spot
-
         return true;
+    }
+
+    const deleteReviewButton = (user, review) => {
+        if (user === null || user === undefined) return false;
+        if (user.id === review.userId) return true;
+        return false;
     }
 
     const reviewNum = (num) => {
@@ -152,6 +158,14 @@ const SpotShow = () => {
                                 <h4 className="reviewer">{review.User.firstName}</h4>
                                 <p className="reviewTime">{reviewMonthYear(review.createdAt)}</p>
                                 <p className="reviewContent">{review.review}</p>
+                                <div>
+                                    {deleteReviewButton(user, review) ?
+                                        <OpenModalButton
+                                            buttonText='Delete'
+                                            modalComponent={<DeleteReviewModal review={review} spotId={spotId} />}
+                                        /> : null
+                                    }
+                                </div>
                             </div>
 
                         ))}

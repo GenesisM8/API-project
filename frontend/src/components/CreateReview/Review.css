@@ -32,7 +32,8 @@ box-shadow: 1px 1px 2px 1px black;
 
 *:disabled {
     background-color: rgba(61, 136, 228, 0.339);
-    color: rgba(0, 0, 0, 0.854);
-    /* box-shadow: none; */
+    /* color: rgba(0, 0, 0, 0.854); */
+    box-shadow: none;
+    color:rgba(255, 255, 255, 0.859)
 }
 
