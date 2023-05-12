@@ -98,14 +98,18 @@ const SpotShow = () => {
                         </div>
                         <div className='reserveContainer'>
                             <div className='priceInfo'>
-                                <p>${spot.price} night</p>
+                                <div className='night'>
+                                  <p className='priceP'>${spot.price}</p>
+                                <p >night</p>  
+                                </div>
+                                
                                 {spot.avgStarRating === 'NaN' ?
-                                    <div className='number'>
+                                    <div className='new'>
                                         <i class="fa-sharp fa-solid fa-star"></i>
-                                        <h4> New </h4>
+                                        <h4 > New </h4>
                                     </div>
                                     : (
-                                        <div className='number'>
+                                        <div className='number2'>
                                             <i class="fa-sharp fa-solid fa-star"></i>
                                             <h4>{spot.avgStarRating}</h4>
                                             <h4 className='pushLeft'>{reviewNum(spot.numReviews)}</h4>
@@ -113,7 +117,10 @@ const SpotShow = () => {
                                     )}
 
                             </div>
-                            <button className='manageButton'>Reserve</button>
+                            <div className='pushButton'>
+                               <button className='reserveButton'>Reserve</button> 
+                            </div>
+                            
                         </div>
                     </div>
                     

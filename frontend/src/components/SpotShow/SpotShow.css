@@ -1,97 +1,127 @@
-.imgShowRight{
-    width:16rem;
+.imgShowRight {
+    width: 19rem;
     height: 13.1rem;
 
 }
 
-.imgShowLeft{
-    width: 29rem;
-    height: 26.5rem;
-    
+.imgShowLeft {
+    width: 35rem;
+    height: 26.6rem;
+
+
 }
 
-.showContainer{
+.showContainer {
     display: flex;
     flex-direction: row;
     /* padding: 2rem; */
     gap: 5px;
     justify-content: center;
     align-items: center;
-   padding: 1rem;
+    padding: 1rem;
+    /* padding-left: 4rem;
+   padding-right: 6rem; */
     width: 100%;
-   
-  
+
+
     font-family: sans-serif;
 }
 
-.fullPageShow{
+.fullPageShow {
     display: flex;
     flex-direction: column;
-    padding-left: 3rem;
+    padding-left: 1rem;
     padding-top: 2rem;
     justify-content: center;
     /* height: 100%;
     width: 100%; */
     margin-bottom: 5rem;
+
 }
 
-.rightContainerShow{
+.rightContainerShow {
     display: flex;
     flex-direction: column;
+    gap: 6px;
+
     /* flex-wrap: wrap; */
-    width: 45rem;
-    gap: 5px;
+    /* width: 45rem;
+    gap: 5px; */
+    /* padding-right: 3rem; */
+
 }
-.smallImg{
+
+.smallImg {
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
-.spotDetails{
+
+.spotDetails {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid lightgray;
     padding: 1rem;
 }
 
-.hostedText{
+.hostedText {
     width: 50rem;
     height: 10rem;
     font-family: sans-serif;
 }
 
-.reserveContainer{
-display: flex;
-flex-direction: column;
-border: 2px solid black;
-width: 21rem;
-height: 8rem;
-margin-left: 1rem;
-margin-right: 1rem;
-font-family: sans-serif;
+.reserveContainer {
+    display: flex;
+    flex-direction: column;
+
+    border: 2px solid black;
+    width: 24rem;
+    height: 9rem;
+    margin-left: 6.5rem;
+    margin-right: 1rem;
+    font-family: sans-serif;
+    border-radius: 10px;
 }
 
-.priceInfo{
+.priceInfo {
     display: flex;
     flex-direction: row;
-    width: 19rem;
-    gap: 7rem;
+    width: 25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    align-items: center;
+    gap: 4rem;
     font-family: sans-serif;
+    /* border:solid 1px red; */
+    padding-top: 5px;
 }
 
-.number{
+.number {
     display: flex;
     flex-direction: row;
     align-items: center;
     font-family: sans-serif;
- 
+
+
 }
 
-.pushLeft{
-   padding-left: 1.5rem;
-   display: flex;
-   flex-direction: row;
-   width: 5rem;
+.number2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: sans-serif;
+    width: 14rem;
+    /* border: 1px solid green; */
+    padding-left: 1.3rem;
+    font-size: 17px;
+}
+
+.pushLeft {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 6rem;
+
 
 }
 
@@ -101,25 +131,75 @@ font-family: sans-serif;
 
 }
 
-.allReviews{
+.allReviews {
     padding-top: 1.5rem;
 }
 
-.secondContainer{
-   padding-left: 5rem;
+.secondContainer {
+    padding-left: 5rem;
 }
 
-*.fa-star{
-color: rgba(61, 136, 228, 0.657);
-padding-right: 4px;
-font-size: 1.6rem;
+/* *.fa-star {
+    color: rgba(61, 136, 228, 0.657);
+    padding-right: 4px;
+    font-size: 1.5rem;
 
-}
+} */
 
-.starAndNum{
+.starAndNum {
     display: flex;
-        flex-direction: row;
-        align-items: center;
-        font-family: sans-serif;
-        padding-left: 3rem;
+    flex-direction: row;
+    align-items: center;
+    font-family: sans-serif;
+    padding-left: 3rem;
+}
+
+.priceP {
+    padding-left: 1rem;
+    font-size: 24px;
+}
+
+.night {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.reserveButton {
+
+    width: 21rem;
+    height: 2.5rem;
+    color: white;
+    font-size: 15px;
+    background-color: rgba(61, 136, 228, 0.852);
+    box-shadow: 1px 1px 2px 1px black;
+    padding-left: 1rem;
+
+}
+
+.pushButton{
+    padding-left: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.new{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 4.5rem;
+    font-size: 18px;
+}
+
+
+.number2 i{
+     color: rgb(61, 136, 228);
+    font-size: 23px;
+    padding-right: 3px;
+}
+
+.new i{
+    color: rgb(61, 136, 228);
+        font-size: 23px;
+        padding-right: 3px;
 }
