@@ -60,13 +60,13 @@ const SpotShow = () => {
         return (() => dispatch(clearSpotsAction()))
     }, [dispatch, spotId])
 
-
+    const comingImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ETJqrc4M9dIqhXg2iNzuFyQVxLvDwPyueVGKoSBQEdZcm_rhTEwWGWmP09wI7lcjCEw&usqp=CAU"
     if (!spot) return null;
 
     if (!spot.SpotImages) return null;
     if (!spot.Owner) return (<h1>Owner not Found...</h1>)
     if (!reviews) return null
-
+   
     return (
         <>
             <div className='fullPageShow'>
@@ -80,11 +80,11 @@ const SpotShow = () => {
                         <div className='rightContainerShow'>
                             <div className='smallImg'>
                                 <img src={spot.SpotImages[1].url} alt='spotsImgs' className='imgShowRight' />
-                                <img src={spot.SpotImages[2].url} alt='spotsImgs' className='imgShowRight' />
+                                <img src={spot.SpotImages[2]?.url || comingImg} alt='spotsImgs' className='imgShowRight' />
                             </div>
                             <div className='smallImg'>
-                                <img src={spot.SpotImages[3].url} alt='spotsImgs' className='imgShowRight' />
-                                <img src={spot.SpotImages[1].url} alt='spotsImgs' className='imgShowRight' />
+                                <img src={spot.SpotImages[3]?.url || comingImg} alt='spotsImgs' className='imgShowRight' />
+                                <img src={spot.SpotImages[4]?.url || comingImg} alt='spotsImgs' className='imgShowRight'></img>
                             </div>
 
                         </div>

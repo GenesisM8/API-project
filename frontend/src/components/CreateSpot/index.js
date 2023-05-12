@@ -12,8 +12,6 @@ const CreateSpot = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
-    // const [lat, setLat] = useState('');
-    // const [lng, setLng] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -26,6 +24,8 @@ const CreateSpot = () => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [resErrors, setResErrors] = useState({});
 
+    
+
     useEffect(() => {
         const err = [];
         if (!address.length) err.address = 'Address is required'
@@ -36,25 +36,22 @@ const CreateSpot = () => {
         if (!name.length) err.name = 'Name is required'
         if (!price || price <= 0) err.price = 'Price is required and needs to be greater than 0'
         if (!previewImage.length) err.imageMin = 'Preview image is required'
-        // if (!previewImage && !previewImage.includes('.png') &&
-        //     !previewImage.includes('.jpg') &&
-        //     !previewImage.includes('.jpeg')) err.image1 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (previewImage && !previewImage.includes('.png') &&
+            !previewImage.includes('.jpg') &&
+            !previewImage.includes('.jpeg')) err.image1 = 'Image URL must end in .png, .jpg, or .jpeg'
         if (!image2.length) err.img2 = 'Image requiere'
-        if (!image3.length) err.img3 = 'Image requiere'
-        if (!image4.length) err.img4 = 'Image requiere'
-        if (!image5.length) err.img5 = 'Image requiere'
-        // if (image2 && !image2.includes('.png') &&
-        //     !image2.includes('.jpg') &&
-        //     !image2.includes('.jpeg')) err.image2 = 'Image URL must end in .png, .jpg, or .jpeg'
-        // if (image3 && !image3.includes('.png') &&
-        //     !image3.includes('.jpg') &&
-        //     !image3.includes('.jpeg')) err.image3 = 'Image URL must end in .png, .jpg, or .jpeg'
-        // if (image4 && !image4.includes('.png') &&
-        //     !image4.includes('.jpg') &&
-        //     !image4.includes('.jpeg')) err.image4 = 'Image URL must end in .png, .jpg, or .jpeg'
-        // if (image5 && !image5.includes('.png') &&
-        //     !image5.includes('.jpg') &&
-        //     !image5.includes('.jpeg')) err.image5 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image2 && !image2.includes('.png') &&
+            !image2.includes('.jpg') &&
+            !image2.includes('.jpeg')) err.image2 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image3 && !image3.includes('.png') &&
+            !image3.includes('.jpg') &&
+            !image3.includes('.jpeg')) err.image3 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image4 && !image4.includes('.png') &&
+            !image4.includes('.jpg') &&
+            !image4.includes('.jpeg')) err.image4 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image5 && !image5.includes('.png') &&
+            !image5.includes('.jpg') &&
+            !image5.includes('.jpeg')) err.image5 = 'Image URL must end in .png, .jpg, or .jpeg'
         setErrors(err);
     }, [address, city, state, country, name, description, price, previewImage, image2, image3, image4, image5])
 
@@ -68,8 +65,6 @@ const CreateSpot = () => {
             city,
             state,
             country,
-            // lat,
-            // lng,
             name,
             description,
             price,
@@ -221,7 +216,6 @@ const CreateSpot = () => {
                                 value={price}
                                 name='price'
                                 placeholder='Price per night (USD)'
-                                pattern="^\$?[0-9]+(\.[0-9]{2})?$"
                                 onChange={(e) => setPrice(e.target.value)}
                             ></input>
                             {hasSubmitted ?
@@ -240,11 +234,14 @@ const CreateSpot = () => {
                                 value={previewImage}
                                 onChange={(e) => setPreviewImage(e.target.value)}
                             ></input>
-                            {hasSubmitted ?
+                            {/* {hasSubmitted ?
                                 <p className='err'>{errors.previewImage}</p> : null
-                            }
+                            } */}
                             {hasSubmitted ?
                                 <p className='err'>{errors.imageMin}</p> : null
+                            }
+                            {hasSubmitted ?
+                                <p className='err'>{errors.image1}</p> : null
                             }
                             <input
                                 type='text'
@@ -264,37 +261,37 @@ const CreateSpot = () => {
                                 value={image3}
                                 onChange={(e) => setImage3(e.target.value)}
                             ></input>
-                            {hasSubmitted ?
+                            {/* {hasSubmitted ?
                                 <p className='err'>{errors.image3}</p> : null
                             }
                             {hasSubmitted ?
                                 <p className='err'>{errors.img3}</p> : null
-                            }
+                            } */}
                             <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image4}
                                 onChange={(e) => setImage4(e.target.value)}
                             ></input>
-                            {hasSubmitted ?
+                            {/* {hasSubmitted ?
                                 <p className='err'>{errors.image4}</p> : null
 
                             }
                             {hasSubmitted ?
                                 <p className='err'>{errors.img4}</p> : null
-                            }
+                            } */}
                             <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image5}
                                 onChange={(e) => setImage5(e.target.value)}
                             ></input>
-                            {hasSubmitted ?
+                            {/* {hasSubmitted ?
                                 <p className='err'>{errors.image5}</p> : null
                             }
                             {hasSubmitted ?
                                 <p className='err'>{errors.img5}</p> : null
-                            }
+                            } */}
                         </div>
                     </div>
                     <button type='submit'>Create Spot</button>
