@@ -36,9 +36,9 @@ const SpotsIndex = () => {
                                  <p>{spot.city}, {spot.state}</p>   
                                 </NavLink>
                                
-                                <div> {!spot.avgRating ? "New" : <div>
-                                    <p>⭐️ {Number.parseFloat(spot.avgRating).toFixed(1)}</p>
-                                </div>}</div>
+                                <div> 
+                                {!spot.avgRating ? "New" : <div><p>⭐️ {Number.parseFloat(spot.avgRating).toFixed(1)}</p></div>}
+                                </div>
                             </div>
                             <div className='lastLine'>
                                 <p>${spot.price} night</p>
