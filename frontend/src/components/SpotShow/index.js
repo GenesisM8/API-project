@@ -5,6 +5,8 @@ import { singleSpotThunk, clearSpotsAction } from '../../store/spots';
 import { loadReviewThunk } from "../../store/reviews";
 import './SpotShow.css'
 import { useParams } from 'react-router-dom';
+import OpenModalButton from '../OpenModalButton/index'
+import CreateReviewModal from "../CreateReview";
 
 const SpotShow = () => {
     const { spotId } = useParams();
@@ -135,7 +137,10 @@ const SpotShow = () => {
                         }
 
                         {postReviewButton(user, reviews, spot) ?
-                           <button>Post your Review</button> : null
+                            <OpenModalButton
+                                buttonText='Post a review'
+                                modalComponent={<CreateReviewModal spot={spot} />}
+                            /> : null
                         }
                     </div>
                 </div>
