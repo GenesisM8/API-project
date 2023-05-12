@@ -152,7 +152,7 @@ const SpotShow = () => {
                         
                         {postReviewButton(user, reviews, spot) ?
                             <OpenModalButton
-                                buttonText='Post a review'
+                                buttonText='Post your review'
                                 modalComponent={<CreateReviewModal spot={spot} />}
                             /> : null
                         }

@@ -34,7 +34,7 @@ const CurrentUserSpots = () => {
                 </div>
                 <div className='currentSpotContainer'>
                     <div className='eachCurrentSpot'>
-                        {spots.map((spot) => (
+                        {spots.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((spot) => (
                             <div key={`${spot.id}`}>
 
                                 <NavLink key={spot.id} to={`/spots/${spot.id}`}>

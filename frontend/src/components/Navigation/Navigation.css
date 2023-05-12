@@ -46,6 +46,7 @@
     /* padding-right: 3em; */
     position: relative;
     top: 45px;
+    border: 1.5px solid rgba(61, 136, 228, 0.785);
 
 }
 
@@ -108,13 +109,13 @@
     gap: 5px;
     font-style: normal;
     font-size: 15px;
-    height: 7rem;
+    height: 7.4rem;
     width: 13rem;
     font-family: sans-serif;
     justify-content: center;
     align-items: center;
-    padding-left: 1rem;
-    padding-top: 15px;
+    /* padding-left: 1rem; */
+    padding-top: 16px;
     padding-bottom: 5px;
 
 }
@@ -133,9 +134,11 @@
     border: 1px solid lightgray;
     background-color: white;
     box-shadow: lightgray 0px 0px 6px;
-    border-radius: 2rem;
+    border-radius: 5px;
     width: 5rem;
     height: 1.5rem;
+    color: white;
+    background-color:  rgba(61, 136, 228, 0.717);
    
 }
 

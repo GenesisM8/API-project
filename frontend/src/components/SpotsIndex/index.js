@@ -22,7 +22,7 @@ const SpotsIndex = () => {
         <>
             <div className='spotsContainer'>
                 
-                {spots.map((spot) => (
+                {spots.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((spot) => (
 
                     <div className='singleSpotContainer' key={`spot/${spot.id}`}>
                         <div className='imgContainer'>
