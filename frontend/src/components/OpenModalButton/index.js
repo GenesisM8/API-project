@@ -15,7 +15,7 @@ function OpenModalButton({
         setModalContent(modalComponent);
     };
 
-    return <button onClick={onClick} className="manageLastButtons">{buttonText}</button>;
+    return <button onClick={onClick} className='manageLastButtons'>{buttonText}</button>;
 }
 
 export default OpenModalButton;

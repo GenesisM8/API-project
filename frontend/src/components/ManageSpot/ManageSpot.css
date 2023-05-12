@@ -30,7 +30,7 @@
     padding-top: 2rem;
     align-items: center;
     width: 18rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+font-family: sans-serif;
 
 }
 
@@ -40,7 +40,7 @@
     border: 1px solid lightgray;
     height: 2.3rem;
     box-shadow: lightgray 0px 0px 6px;
-    border-radius: 15px;
+    border-radius: 7px;
     background-color: rgba(61, 136, 228, 0.785);
     color: white;
     font-size: 14px;
@@ -74,14 +74,15 @@ font-family:sans-serif;
 
 .manageLastButtons{
     background-color: white;
-    width: 4.5rem;
-    height: 1.75rem;
+    width: 7rem;
+    height: 2rem;
     border-radius: 5px;
     background-color: rgba(61, 136, 228, 0.785);
     color: white;
     border: 1px solid lightgray;
      box-shadow: lightgray 0px 0px 6px;
-     font-size: 13.5px;
+     font-size: 14px;
+
 }
 
 

@@ -5,6 +5,8 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    border: 3px solid rgba(61, 136, 228, 0.785);;
+    border-radius: 15px;
 }
 
 .deleteText {
@@ -25,7 +27,7 @@
     display: flex;
     flex-direction: column;
     width: 25rem;
-    gap: 5px;
+    gap: 8px;
 }
 
 .Ybutton {

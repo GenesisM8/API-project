@@ -116,7 +116,8 @@ const SpotShow = () => {
                             <button className='manageButton'>Reserve</button>
                         </div>
                     </div>
-                    <div>
+                    
+                    <div className='.secondContainer'>
                         {firstReview(user, reviews, spot) ? (
                             <div>
                                 <div className='number'>
@@ -126,7 +127,7 @@ const SpotShow = () => {
                                 <p>Be the first to post a review!</p>
                             </div>
                         ) : <div>
-                            <div className='number'>
+                                <div className='starAndNum'>
                                 <i class="fa-sharp fa-solid fa-star"></i>
                                 {spot.avgStarRating === 'NaN' ? <h2>New</h2>: 
                                 <div className='number'>
@@ -141,7 +142,7 @@ const SpotShow = () => {
                             </div>
                         </div>
                         }
-
+                        
                         {postReviewButton(user, reviews, spot) ?
                             <OpenModalButton
                                 buttonText='Post a review'
@@ -152,9 +153,9 @@ const SpotShow = () => {
                 </div>
                 <div>
 
-                    <div>
+                    <div className='allReviews'>
                         {reviews.map((review) => (
-                            <div>
+                            <div className='singleReview'>
                                 <h4 className="reviewer">{review.User.firstName}</h4>
                                 <p className="reviewTime">{reviewMonthYear(review.createdAt)}</p>
                                 <p className="reviewContent">{review.review}</p>
