@@ -1,8 +1,8 @@
 .imgShowRight {
     /* width: 19rem;
     height: 13.1rem; */
-    width: 16rem;
-        height: 11.1rem;
+    width: 17rem;
+        height: 13.2rem;
 
 }
 
@@ -10,8 +10,8 @@
     /* width: 35rem;
     height: 26.6rem; */
 
-    width: 28rem;
-        height: 22.6rem;
+    width: 31rem;
+        height: 26.7rem;
 
 }
 
@@ -26,9 +26,7 @@
     /* padding-left: 4rem;
    padding-right: 6rem; */
     width: 100%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-
+    padding: 1rem;
     font-family: sans-serif;
 }
 
@@ -68,7 +66,9 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid lightgray;
-    padding: 1rem;
+    padding: 2rem;
+    width: 100%;
+    /* border: 1px solid red; */
 }
 
 .hostedText {
@@ -84,8 +84,8 @@
     border: 2px solid black;
     width: 24rem;
     height: 8rem;
+    /* margin-right: 1rem; */
     margin-left: 1rem;
-    margin-right: 1.5rem;
     font-family: sans-serif;
     border-radius: 10px;
 }
