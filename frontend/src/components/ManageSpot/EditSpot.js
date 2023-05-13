@@ -210,7 +210,7 @@ const EditSpot = () => {
                         </div>
                     </div>
 
-                    <button type='submit'>Update Spot</button>
+                    <button type='submit'>Update Your Spot</button>
             </form>
         </div>
         

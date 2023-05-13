@@ -39,7 +39,6 @@ const CreateSpot = () => {
         if (previewImage && !previewImage.includes('.png') &&
             !previewImage.includes('.jpg') &&
             !previewImage.includes('.jpeg')) err.image1 = 'Image URL must end in .png, .jpg, or .jpeg'
-        if (!image2.length) err.img2 = 'Image requiere'
         if (image2 && !image2.includes('.png') &&
             !image2.includes('.jpg') &&
             !image2.includes('.jpeg')) err.image2 = 'Image URL must end in .png, .jpg, or .jpeg'
@@ -108,6 +107,7 @@ const CreateSpot = () => {
                                 type='text'
                                 name='country'
                                 value={country}
+                                placeholder='country'
                                 onChange={(e) => setCountry(e.target.value)}
                             ></input>
                             {hasSubmitted ?
@@ -120,6 +120,7 @@ const CreateSpot = () => {
                                 type='text'
                                 name='address'
                                 value={address}
+                                placeholder='stree Address'
                                 onChange={(e) => setAddress(e.target.value)}
                             ></input>
                             {hasSubmitted ?
@@ -132,6 +133,7 @@ const CreateSpot = () => {
                                 <input
                                     type='text'
                                     name='city'
+                                    placeholder='city'
                                     value={city}
                                     onChange={(e) => setCity(e.target.value)}
                                 ></input>
@@ -144,6 +146,7 @@ const CreateSpot = () => {
                                 <input
                                     type='text'
                                     name='state'
+                                    placeholder='state'
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}
                                 ></input>
@@ -252,46 +255,38 @@ const CreateSpot = () => {
                             {hasSubmitted ?
                                 <p className='err'>{errors.image2}</p> : null
                             }
-                            {hasSubmitted ?
-                                <p className='err'>{errors.img2}</p> : null
-                            }
+                    
                             <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image3}
                                 onChange={(e) => setImage3(e.target.value)}
                             ></input>
-                            {/* {hasSubmitted ?
+                             {hasSubmitted ?
                                 <p className='err'>{errors.image3}</p> : null
                             }
-                            {hasSubmitted ?
-                                <p className='err'>{errors.img3}</p> : null
-                            } */}
+                            
                             <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image4}
                                 onChange={(e) => setImage4(e.target.value)}
                             ></input>
-                            {/* {hasSubmitted ?
+                             {hasSubmitted ?
                                 <p className='err'>{errors.image4}</p> : null
 
                             }
-                            {hasSubmitted ?
-                                <p className='err'>{errors.img4}</p> : null
-                            } */}
+                          
                             <input
                                 type='text'
                                 placeholder='Image URL'
                                 value={image5}
                                 onChange={(e) => setImage5(e.target.value)}
                             ></input>
-                            {/* {hasSubmitted ?
+                            {hasSubmitted ?
                                 <p className='err'>{errors.image5}</p> : null
                             }
-                            {hasSubmitted ?
-                                <p className='err'>{errors.img5}</p> : null
-                            } */}
+                           
                         </div>
                     </div>
                     <button type='submit'>Create Spot</button>

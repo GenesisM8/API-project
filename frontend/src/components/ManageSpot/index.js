@@ -27,11 +27,10 @@ const CurrentUserSpots = () => {
             <div>
                 <div className='manageContainer'>
                     <h1>Manage Your Spots</h1>
-                    <NavLink exact to='/spots/new'>
-                        <button className='manageButton'>Create a New Spot</button>
-                    </NavLink>
+                    
 
                 </div>
+                {spots.length? 
                 <div className='currentSpotContainer'>
                     <div className='eachCurrentSpot'>
                         {spots.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((spot) => (
@@ -76,7 +75,9 @@ const CurrentUserSpots = () => {
 
                         ))}
                     </div>
-                </div>
+                </div> : <NavLink exact to='/spots/new'>
+                        <button className='manageButton'>Create a New Spot</button>
+                    </NavLink>}
             </div>
 
         </>

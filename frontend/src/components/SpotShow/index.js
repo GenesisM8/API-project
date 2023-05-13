@@ -60,6 +60,11 @@ const SpotShow = () => {
         return (() => dispatch(clearSpotsAction()))
     }, [dispatch, spotId])
 
+    const clickReserve = (e) => {
+        e.preventDefault();
+        window.alert('Feature Coming Soon')
+    }
+
     const comingImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ETJqrc4M9dIqhXg2iNzuFyQVxLvDwPyueVGKoSBQEdZcm_rhTEwWGWmP09wI7lcjCEw&usqp=CAU"
     if (!spot) return null;
 
@@ -72,14 +77,14 @@ const SpotShow = () => {
             <div className='fullPageShow'>
                 <div >
                     <h1>{spot.name}</h1>
-                    <p>{spot.city}, {spot.state}.</p>
+                    <p>{spot.city}, {spot.state}, {spot.country}</p>
                     <div className='showContainer'>
                         <div>
                             <img src={spot.SpotImages[0].url} alt='firstImg' className='imgShowLeft' />
                         </div>
                         <div className='rightContainerShow'>
                             <div className='smallImg'>
-                                <img src={spot.SpotImages[1].url} alt='spotsImgs' className='imgShowRight' />
+                                <img src={spot.SpotImages[1]?.url|| comingImg} alt='spotsImgs' className='imgShowRight' />
                                 <img src={spot.SpotImages[2]?.url || comingImg} alt='spotsImgs' className='imgShowRight' />
                             </div>
                             <div className='smallImg'>
@@ -112,13 +117,14 @@ const SpotShow = () => {
                                         <div className='number2'>
                                             <i class="fa-sharp fa-solid fa-star"></i>
                                             <h4>{spot.avgStarRating}</h4>
+                                            <h4 className='dot'>.</h4>
                                             <h4 className='pushLeft'>{reviewNum(spot.numReviews)}</h4>
                                         </div>
                                     )}
 
                             </div>
                             <div className='pushButton'>
-                               <button className='reserveButton'>Reserve</button> 
+                               <button onClick={clickReserve} className='reserveButton'>Reserve</button> 
                             </div>
                             
                         </div>
@@ -161,7 +167,7 @@ const SpotShow = () => {
                 <div>
 
                     <div className='allReviews'>
-                        {reviews.map((review) => (
+                        {reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((review) => (
                             <div className='singleReview'>
                                 <h4 className="reviewer">{review.User.firstName}</h4>
                                 <p className="reviewTime">{reviewMonthYear(review.createdAt)}</p>
