@@ -14,3 +14,5 @@ All users on SkyBnb can perform the following actions:
 
 1. Create, view, update, and delete spots that are associated with their account.
 2. Create, view, update, and delete reviews that are associated with their account.
+
+To explore Tree House Bnb in action, visit our live site at: https://airbnb-project-yghy.onrender.com
