@@ -137,7 +137,7 @@ const SpotShow = () => {
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <h2>New</h2>
                                 </div>
-                                <p>Be the first to post a review!</p>
+                                <p className='oneRem'>Be the first to post a review!</p>
                             </div>
                         ) : <div>
                                 <div className='starAndNum'>
@@ -147,6 +147,7 @@ const SpotShow = () => {
                                     <h4 className='number'>
                                      {spot.avgStarRating}   
                                     </h4>
+                                            <h4 className='dot'>.</h4>
                                     <h4 className='pushLeft'>
                                     {reviewNum(spot.numReviews)}    
                                     </h4>                                    
@@ -155,13 +156,15 @@ const SpotShow = () => {
                             </div>
                         </div>
                         }
-                        
-                        {postReviewButton(user, reviews, spot) ?
+                        <div className='push'>
+                             {postReviewButton(user, reviews, spot) ?
                             <OpenModalButton
                                 buttonText='Post your review'
                                 modalComponent={<CreateReviewModal spot={spot} />}
                             /> : null
-                        }
+                        } 
+                        </div>
+                      
                     </div>
                 </div>
                 <div>

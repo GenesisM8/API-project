@@ -66,14 +66,14 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid lightgray;
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
     /* border: 1px solid red; */
 }
 
 .hostedText {
-    width: 50rem;
-    height: 10rem;
+    width: 100%;
+    height: 100%;
     font-family: sans-serif;
 }
 
@@ -93,7 +93,7 @@
 .priceInfo {
     display: flex;
     flex-direction: row;
-    width: 25rem;
+    width: 20rem;
     padding-left: 1rem;
     padding-right: 1rem;
     align-items: center;
@@ -109,6 +109,7 @@
     flex-direction: row;
     align-items: center;
     font-family: sans-serif;
+    padding-left: 1rem;
 
 
 }
@@ -136,11 +137,13 @@
 .singleReview {
     /* border-bottom: 1px solid lightgrey; */
     padding-bottom: 1rem;
+    padding-left: 1rem;
 
 }
 
 .allReviews {
-    padding-top: 1.5rem;
+   display: flex;
+   flex-direction: column;
 }
 
 .secondContainer {
@@ -159,11 +162,12 @@
     flex-direction: row;
     align-items: center;
     font-family: sans-serif;
-    padding-left: 3rem;
+    padding-left: 1rem;
+    font-size: 19px;
 }
 
 .priceP {
-    padding-left: 0.3rem;
+    padding-left: 0.1rem;
     font-size: 24px;
 }
 
@@ -176,7 +180,7 @@
 
 .reserveButton {
 
-    width: 21rem;
+    width: 19rem;
     height: 2.5rem;
     color: white;
     font-size: 15px;
@@ -195,7 +199,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 4.5rem;
+    padding-left: 5.5rem;
     font-size: 18px;
 }
 
@@ -216,3 +220,62 @@
     padding-left: 15px;
     padding-bottom: 6px;
 }
+
+.fullPageShow h1{
+    color: rgba(61, 136, 228);
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.fullPageShow h2{
+    color: rgba(61, 136, 228);
+        font-weight: 500;
+        font-size: 22px;
+}
+
+.fullPageShow p{
+    text-align: justify;
+    font-size: 17px;
+}
+
+.starAndNum i{
+    color: rgb(61, 136, 228);
+        font-size: 23px;
+        padding-right: 4px;
+}
+
+.starAndNum h2{
+    color: black;
+}
+
+.reviewer{
+height: 0.5rem;
+font-weight: 600;
+}
+
+.reviewTime{
+    color: rgb(157, 157, 157);
+    height: 0.5rem;
+    font-size: 5px;
+    padding-bottom: 2px;
+}
+
+.push{
+    padding-left: 3rem;
+    padding-bottom: 0.5rem;
+}
+
+.number i{
+    color: rgb(61, 136, 228);
+        font-size: 23px;
+        padding-right: 4px;
+}
+
+.number h2, h4{
+    color: black;
+}
+
+.oneRem{
+    padding-left: 1rem;
+}
+

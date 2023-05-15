@@ -61,9 +61,10 @@
 }
 
 .formContainer h1 {
-    padding-left: 5rem;
+    /* padding-left: 5rem; */
     font-size: 30px;
     color: rgba(61, 136, 228, 0.785);
+    font-weight: bold;
 
 }
 

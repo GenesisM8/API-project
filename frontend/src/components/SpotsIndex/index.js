@@ -26,12 +26,16 @@ const SpotsIndex = () => {
 
                     <div className='singleSpotContainer' key={`spot/${spot.id}`}>
                         <div className='imgContainer'>
+                           
                             <NavLink key={spot.id} to={`/spots/${spot.id}`} >
                                 <img src={spot.previewImage} alt='img' className='spotIndex' />
                             </NavLink>
+                             <div className='tooltip'>{spot.name}</div>
                         </div> 
+                         
                        <div className='imgInfo'>
                             <div className='middleLine'>
+
                                 <NavLink key={spot.id} to={`/spots/${spot.id}`} >
                                  <p>{spot.city}, {spot.state}</p>   
                                 </NavLink>
@@ -43,12 +47,12 @@ const SpotsIndex = () => {
                             <div className='lastLine'>
                                 <p>${spot.price} night</p>
                             </div>
-
+ 
                         </div>
 
 
 
-                        {/* <div className='tooltip'><span className="tooltiptext">{spot.name}</span></div> */}
+                      
                     </div>
 
 
