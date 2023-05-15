@@ -36,21 +36,21 @@ const CreateSpot = () => {
         if (!name.length) err.name = 'Name is required'
         if (!price || price <= 0) err.price = 'Price is required and needs to be greater than 0'
         if (!previewImage.length) err.imageMin = 'Preview image is required'
-        // if (previewImage && !previewImage.includes('.png') &&
-        //     !previewImage.includes('.jpg') &&
-        //     !previewImage.includes('.jpeg')) err.image1 = 'Image URL must end in .png, .jpg, or .jpeg'
-        // if (image2 && !image2.includes('.png') &&
-        //     !image2.includes('.jpg') &&
-        //     !image2.includes('.jpeg')) err.image2 = 'Image URL must end in .png, .jpg, or .jpeg'
-        // if (image3 && !image3.includes('.png') &&
-        //     !image3.includes('.jpg') &&
-        //     !image3.includes('.jpeg')) err.image3 = 'Image URL must end in .png, .jpg, or .jpeg'
-        // if (image4 && !image4.includes('.png') &&
-        //     !image4.includes('.jpg') &&
-        //     !image4.includes('.jpeg')) err.image4 = 'Image URL must end in .png, .jpg, or .jpeg'
-        // if (image5 && !image5.includes('.png') &&
-        //     !image5.includes('.jpg') &&
-        //     !image5.includes('.jpeg')) err.image5 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (previewImage && !previewImage.includes('.png') &&
+            !previewImage.includes('.jpg') &&
+            !previewImage.includes('.jpeg')) err.image1 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image2 && !image2.includes('.png') &&
+            !image2.includes('.jpg') &&
+            !image2.includes('.jpeg')) err.image2 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image3 && !image3.includes('.png') &&
+            !image3.includes('.jpg') &&
+            !image3.includes('.jpeg')) err.image3 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image4 && !image4.includes('.png') &&
+            !image4.includes('.jpg') &&
+            !image4.includes('.jpeg')) err.image4 = 'Image URL must end in .png, .jpg, or .jpeg'
+        if (image5 && !image5.includes('.png') &&
+            !image5.includes('.jpg') &&
+            !image5.includes('.jpeg')) err.image5 = 'Image URL must end in .png, .jpg, or .jpeg'
         setErrors(err);
     }, [address, city, state, country, name, description, price, previewImage, image2, image3, image4, image5])
 
