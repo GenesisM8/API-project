@@ -20,8 +20,8 @@ const CreateReviewModal = ({ spot }) => {
 
     useEffect(() => {
         const err = {};
-        if (review.length < 10) err.review = ''
-        if (stars < 1) err.star = ''
+        if (review.length < 10) err.review = 'Review must be at least 10 character'
+        if (stars < 1) err.star = 'Please select at least 1 star'
         setErrors(err);
     }, [review, stars])
 

@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { singleSpotThunk } from '../../store/spots';
 import { useHistory } from 'react-router-dom';
 import { editSpotThunk } from '../../store/spots';
+import '../CreateSpot/CreateSpot.css'
 
 const EditSpot = () => {
     const { spotId } = useParams();
@@ -12,9 +13,9 @@ const EditSpot = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(singleSpotThunk(spotId))
-    },[dispatch, spotId])
+    }, [dispatch, spotId])
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -27,8 +28,8 @@ const EditSpot = () => {
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
- 
-    
+
+
     const updateAddress = (e) => setAddress(e.target.value);
     const updateCity = (e) => setCity(e.target.value);
     const updateState = (e) => setState(e.target.value);
@@ -48,22 +49,22 @@ const EditSpot = () => {
         if (!price || price <= 0) err.price = 'Price is required and needs to be greater than 0'
 
         setErrors(err);
-        
+
     }, [address, city, state, country, name, description, price])
 
     //Populate the inputs with original values in the form
-    useEffect(()=>{
-        if(spot){
-           setCountry(spot.country) 
-           setAddress(spot.address)
-           setState(spot.state)
-           setName(spot.name)
-           setDescription(spot.description)
-           setPrice(spot.price)
-           setCity(spot.city)
+    useEffect(() => {
+        if (spot) {
+            setCountry(spot.country)
+            setAddress(spot.address)
+            setState(spot.state)
+            setName(spot.name)
+            setDescription(spot.description)
+            setPrice(spot.price)
+            setCity(spot.city)
         }
-        
-    },[spot])
+
+    }, [spot])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -85,7 +86,7 @@ const EditSpot = () => {
             if (!updatedSpot.errors) {
                 history.push(`/spots/${updatedSpot.id}`)
                 await setHasSubmitted(false);
-            } 
+            }
         }
     }
 
@@ -94,58 +95,75 @@ const EditSpot = () => {
 
     return (
         <>
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h1>Update Spot</h1>
+            <div className='formContainer'>
+                <form onSubmit={handleSubmit} className='formCss'>
+                    <h1>Update Spot</h1>
                     <div>
                         <h2>Where's your place located?</h2>
                         <p>Guests will only get your exact address once they booked a reservation.</p>
                     </div>
-                    <div>
-                        <div>
-                            <label>Country</label>
-                            {hasSubmitted ? <p className='error'>{errors.country}</p> : null}
-                            <input
-                                type='text'
-                                name='country'
-                                value={country}
-                                onChange={updateCountry}
-                            ></input>
+                    <div className='smallContainerForm'>
+                        <div >
+                            <div>
+                                <div className='errosH'>
+                                    <label>Country</label>
+                                    {hasSubmitted ? <p className='err'>{errors.country}</p> : null}
+                                </div>
+
+                                <input
+                                    type='text'
+                                    name='country'
+                                    className='formImputs'
+                                    value={country}
+                                    onChange={updateCountry}
+                                ></input>
+                            </div>
+                            <div>
+                                <div className='errosH'>
+                                    <label>Stree Address</label>
+                                    {hasSubmitted ? <p className='err'>{errors.address}</p> : null}
+                                </div>
+
+                                <input
+                                    type='text'
+                                    name='address'
+                                    className='formImputs'
+                                    value={address}
+                                    onChange={updateAddress}
+                                ></input>
+                            </div>
                         </div>
-                        <div>
-                            <label>Stree Address</label>
-                            {hasSubmitted ?<p className='error'>{errors.address}</p> : null}
-                            <input
-                                type='text'
-                                name='address'
-                                value={address}
-                                onChange={updateAddress}
-                            ></input>
+                        <div className='errosH2'>
+                            <div>
+                                <div className='errosH'>
+                                    <label>City</label>
+                                    {hasSubmitted ? <p className='err'>{errors.city}</p> : null}
+                                </div>
+
+                                <input
+                                    type='text'
+                                    name='city'
+                                    className='smallInputCity'
+                                    value={city}
+                                    onChange={updateCity}
+                                ></input>
+                            </div>
+                            <div>
+                                <div className='errosH'>
+                                    <label>State</label>
+                                    {hasSubmitted ? <p className='err'>{errors.state}</p> : null}
+                                </div>
+
+                                <input
+                                    type='text'
+                                    name='state'
+                                    className='smallInputState'
+                                    value={state}
+                                    onChange={updateState}
+                                ></input>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div>
-                            <label>City</label>
-                            {hasSubmitted ?<p className='error'>{errors.city}</p> : null}
-                            <input
-                                type='text'
-                                name='city'
-                                value={city}
-                                onChange={updateCity}
-                            ></input>
-                        </div>
-                        <div>
-                            <label>State</label>
-                            {hasSubmitted ?<p className='error'>{errors.state}</p> : null}
-                            <input
-                                type='text'
-                                name='state'
-                                value={state}
-                                onChange={updateState}
-                            ></input>
-                        </div>
-                    </div>
-                    {/* <div>
+                        {/* <div>
                         <div>
                             <label>Latitude</label>
                             <input
@@ -167,7 +185,8 @@ const EditSpot = () => {
                             ></input>
                         </div>
                     </div> */}
-                    <div>
+                    </div>
+                    <div className='smallContainerForm'>
                         <h2>Describe your place to guests</h2>
                         <p>Mention the best features of your space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</p>
                         <div>
@@ -176,44 +195,49 @@ const EditSpot = () => {
                                 name='description'
                                 onChange={updateDescription}
                                 placeholder='Please write at least 30 character'
+                        
                                 rows='8'
-                                cols='50'
+                                cols='48.5'
                             ></textarea>
-                            {hasSubmitted ? <p className='error'>{errors.description}</p> : null}
+                            {hasSubmitted ? <p className='err'>{errors.description}</p> : null}
                         </div>
                     </div>
-                    <div>
+                    <div className='smallContainerForm'>
                         <h2>Create a title for your spot</h2>
                         <p>Catch guests' attention with a spot title that highlights what makes your place special.</p>
                         <input
                             type='text'
                             value={name}
+                            className='formImputs'
                             onChange={updateName}
                             name='name'
                             placeholder='Name of your spot'
                         ></input>
-                        {hasSubmitted ?<p className='error'>{errors.name}</p> : null}
+                        {hasSubmitted ? <p className='err'>{errors.name}</p> : null}
                     </div>
                     <div>
                         <h2>Set a base price for your spot</h2>
                         <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
-                        <div>
+                        <div className='errosH'>
                             <p>$</p>
                             <input
                                 value={price}
                                 name='price'
+                                className='formImputs'
                                 placeholder='Price per night (USD)'
-                                pattern="^\$?[0-9]+(\.[0-9]{2})?$"
+                                // pattern="^\$?[0-9]+(\.[0-9]{2})?$"
+                                title="Please enter a valid price in USD (numerical values only)."
                                 onChange={updatePrice}
                             ></input>
-                            {hasSubmitted ? <p className='error'>{errors.price}</p> : null}
+                           
                         </div>
+                         {hasSubmitted ? <p className='err'>{errors.price}</p> : null}
                     </div>
 
-                    <button type='submit'>Update Your Spot</button>
-            </form>
-        </div>
-        
+                    <button type='submit' className='createButton'>Update Your Spot</button>
+                </form>
+            </div>
+
         </>
     )
 }

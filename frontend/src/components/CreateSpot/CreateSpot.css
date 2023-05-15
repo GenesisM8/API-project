@@ -1,23 +1,127 @@
-.formContainer{
+.formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+
 
 }
 
-.formCss{
+.formCss {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-    width: 40rem;
+
+    width: 26rem;
     /* height: 90rem; */
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    padding-left: 15rem;
-  
+    font-family: sans-serif;
+    padding-left: 2rem;
+    margin-bottom: 5rem;
+
 }
 
-.err{
-    color:red
+.err {
+    color: red;
+    font-size: 14.6px;
+    /* height: 1rem; */
+    padding-bottom: 1px;
+
+
+
+}
+
+.errosH {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: 1.5rem;
+    padding-top: 7px;
+    margin-bottom: 5px;
+}
+
+.errosH2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding-top: 3px;
+}
+
+.formCss label {
+    /* font-size: 16px; */
+    height: 1rem;
+   
+}
+
+.formContainer input{
+    border-radius: 0px;
+    border: 2px solid lightgrey;
+    
+}
+
+.formContainer h1 {
+    padding-left: 5rem;
+    font-size: 30px;
+    color: rgba(61, 136, 228, 0.785);
+
+}
+
+.formContainer h2 {
+    font-size: 21px;
+    font-family: sans-serif;
+    color: rgb(29, 29, 29);
+    padding-top: 0.7rem;
+
+}
+
+.smallContainerForm {
+    border-bottom: 2px solid rgba(61, 136, 228, 0.402);
+    padding-bottom: 1.3rem;
+
+    /* padding-left: 1rem; */
+}
+
+.smallInputCity {
+    width: 14.1rem;
+
+}
+
+.smallInputState {
+    width: 10.5rem;
+    /* background-color: red; */
+}
+
+.formImputs {
+    width: 25.5rem;
+}
+
+.formContainer p {
+    text-align: justify;
+}
+
+.imgErrors {
+    height: 1.5rem;
+    color: red;
+    font-size: 14.6px;
+    margin: 0;
+}
+
+.createButton{
+    width: 26rem;
+        height: 2.5rem;
+        color: white;
+        font-size: 15px;
+        background-color: rgba(61, 136, 228, 0.852);
+        box-shadow: 1px 1px 2px 1px black;
+        padding-left: 1rem;
+       margin-top: 1rem;
+}
+
+textarea{
+    font-family: sans-serif;
+        border-radius: 0px;
+            border: 2px solid lightgrey;
+           font-size: 15px;
+           padding: 7px;
 }

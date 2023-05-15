@@ -24,7 +24,7 @@ const CreateSpot = () => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [resErrors, setResErrors] = useState({});
 
-    
+
 
     useEffect(() => {
         const err = [];
@@ -88,7 +88,7 @@ const CreateSpot = () => {
             }
         }
     }
-    
+
     return (
         <>
             <div className='formContainer'>
@@ -100,59 +100,79 @@ const CreateSpot = () => {
                         <h2>Where's your place located?</h2>
                         <p>Guests will only get your exact address once they booked a reservation.</p>
                     </div>
-                    <div>
+                    <div className='smallContainerForm'>
                         <div>
-                            <label>Country</label>
+                            <div className='errosH'>
+                                <label>Country </label>
+                                {hasSubmitted ?
+                                    <p className='err'>{errors.country}</p> : null
+                                }
+                            </div>
+
                             <input
                                 type='text'
                                 name='country'
+                                className='formImputs'
                                 value={country}
                                 placeholder='country'
                                 onChange={(e) => setCountry(e.target.value)}
                             ></input>
-                            {hasSubmitted ?
-                                <p className='err'>{errors.country}</p> : null
-                            }
+
                         </div>
                         <div>
-                            <label>Stree Address</label>
+                            <div className='errosH'>
+                                  <label>Stree Address</label>
+                             {hasSubmitted ?
+                                <p className='err'>{errors.address}</p> : null
+                            } 
+                            </div>
+                         
                             <input
                                 type='text'
                                 name='address'
+                                className='formImputs'
                                 value={address}
                                 placeholder='stree Address'
                                 onChange={(e) => setAddress(e.target.value)}
                             ></input>
-                            {hasSubmitted ?
-                                <p className='err'>{errors.address}</p> : null
-                            }
+                           
                         </div>
-                        <div>
+                        <div className='errosH2'>
                             <div>
-                                <label>City</label>
+                                <div className='errosH'>
+                                     <label>City</label>
+                                  {hasSubmitted ?
+                                    <p className='err'>{errors.city}</p> : null
+                                } 
+                                </div>
+                              
                                 <input
                                     type='text'
+                                    className='smallInputCity'
                                     name='city'
                                     placeholder='city'
                                     value={city}
                                     onChange={(e) => setCity(e.target.value)}
                                 ></input>
-                                {hasSubmitted ?
-                                    <p className='err'>{errors.city}</p> : null
-                                }
+                              
                             </div>
                             <div>
-                                <label>State</label>
+                                <div className='errosH'>
+                                  <label>State</label>
+                                 {hasSubmitted ?
+                                    <p className='err'>{errors.state}</p> : null
+                                }   
+                                </div>
+                               
                                 <input
                                     type='text'
                                     name='state'
                                     placeholder='state'
+                                    className='smallInputState'
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}
                                 ></input>
-                                {hasSubmitted ?
-                                    <p className='err'>{errors.state}</p> : null
-                                }
+                               
                             </div>
 
                         </div>
@@ -179,7 +199,7 @@ const CreateSpot = () => {
                             </div>
                         </div> */}
                     </div>
-                    <div>
+                    <div className='smallContainerForm'>
                         <h2>Describe your place to guests</h2>
                         <p>Mention the best features of your space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</p>
                         <div>
@@ -189,14 +209,14 @@ const CreateSpot = () => {
                                 onChange={(e) => setDescription(e.target.value)}
                                 placeholder='Please write at least 30 character'
                                 rows='8'
-                                cols='50'
+                                cols='48.5'
                             ></textarea>
                             {hasSubmitted ?
                                 <p className='err'>{errors.description}</p> : null
                             }
                         </div>
                     </div>
-                    <div>
+                    <div className='smallContainerForm'>
                         <h2>Create a title for your spot</h2>
                         <p>Catch guests' attention with a spot title that highlights what makes your place special.</p>
                         <input
@@ -204,92 +224,100 @@ const CreateSpot = () => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             name='name'
+                            className='formImputs'
                             placeholder='Name of your spot'
                         ></input>
                         {hasSubmitted ?
                             <p className='err'>{errors.name}</p> : null
                         }
                     </div>
-                    <div>
+                    <div className='smallContainerForm'>
                         <h2>Set a base price for your spot</h2>
                         <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
-                        <div>
+                        <div className='errosH'>
                             <p>$</p>
                             <input
                                 value={price}
                                 name='price'
+                                className='formImputs'
+                                pattern="^\$?[0-9]+(\.[0-9]{2})?$"
+                                title="Please enter a valid price in USD (numerical values only)."
                                 placeholder='Price per night (USD)'
                                 onChange={(e) => setPrice(e.target.value)}
                             ></input>
-                            {hasSubmitted ?
+                           
+                        </div>
+                         {hasSubmitted ?
                                 <p className='err'>{errors.price}</p> : null
                             }
-                        </div>
                     </div>
 
-                    <div>
+                    <div >
                         <h2>Liven up your spot with photos</h2>
                         <p>Submit a link to at least one photo to publish your spot.</p>
                         <div>
                             <input
                                 type='text'
                                 placeholder='Preview Image URL'
+                                className='formImputs'
                                 value={previewImage}
                                 onChange={(e) => setPreviewImage(e.target.value)}
                             ></input>
-                            {/* {hasSubmitted ?
-                                <p className='err'>{errors.previewImage}</p> : null
-                            } */}
+
                             {hasSubmitted ?
-                                <p className='err'>{errors.imageMin}</p> : null
+                                <p className='imgErrors'>{errors.imageMin}</p> : null
                             }
                             {hasSubmitted ?
-                                <p className='err'>{errors.image1}</p> : null
+                                <p className='imgErrors'>{errors.image1}</p> : null
                             }
                             <input
                                 type='text'
                                 placeholder='Image URL'
+                                className='formImputs'
                                 value={image2}
                                 onChange={(e) => setImage2(e.target.value)}
                             ></input>
                             {hasSubmitted ?
-                                <p className='err'>{errors.image2}</p> : null
+                                <p className='imgErrors'>{errors.image2}</p> : null
                             }
-                    
+
                             <input
                                 type='text'
                                 placeholder='Image URL'
+                                className='formImputs'
                                 value={image3}
                                 onChange={(e) => setImage3(e.target.value)}
                             ></input>
-                             {hasSubmitted ?
-                                <p className='err'>{errors.image3}</p> : null
+                            {hasSubmitted ?
+                                <p className='imgErrors'>{errors.image3}</p> : null
                             }
-                            
+
                             <input
                                 type='text'
                                 placeholder='Image URL'
+                                className='formImputs'
                                 value={image4}
                                 onChange={(e) => setImage4(e.target.value)}
                             ></input>
-                             {hasSubmitted ?
-                                <p className='err'>{errors.image4}</p> : null
+                            {hasSubmitted ?
+                                <p className='imgErrors'>{errors.image4}</p> : null
 
                             }
-                          
+
                             <input
                                 type='text'
                                 placeholder='Image URL'
+                                className='formImputs'
                                 value={image5}
                                 onChange={(e) => setImage5(e.target.value)}
                             ></input>
                             {hasSubmitted ?
-                                <p className='err'>{errors.image5}</p> : null
+                                <p className='imgErrors'>{errors.image5}</p> : null
                             }
-                           
+
                         </div>
                     </div>
-                    <button type='submit'>Create Spot</button>
+                    <button type='submit' className='createButton'>Create Spot</button>
                 </form>
             </div>
         </>
