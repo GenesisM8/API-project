@@ -1,8 +1,8 @@
 # SkyBnb
 
-Welcome to Tree House Bnb!
+Hello there! This is SkyBnb, an online platform that functions similarly to Airbnb.
 
-Tree house Bnb is a Airbnb-clone web application which has multiple functionalities such as spots, and reviews.
+It allows users to access a range of features including spots, reviews, and booking services.
 
 Its backend is created with Squelize.js and frontend is created with React-redux.
 
