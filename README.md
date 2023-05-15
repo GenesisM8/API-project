@@ -4,7 +4,7 @@
 
 Hello there! This is SkyBnb, an online platform that functions similarly to Airbnb.
 
-It allows users to access a range of features including spots, reviews, services.
+It allows users to access a range of features including spots, and gireviews services.
 
 Its backend is created with Squelize.js and frontend is created with React-redux.
 
