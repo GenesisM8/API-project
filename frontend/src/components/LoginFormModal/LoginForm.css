@@ -1,7 +1,7 @@
 .logIn{
     display: flex;
     flex-direction: column;
-    height: 21.5rem;
+    height: 22rem;
     width: 27rem;
     align-items: center;
     /* gap: 1rem; */
@@ -63,6 +63,8 @@ button:hover{
     color:red;
     margin-right:9rem;
     margin-top: 0;
+    padding-left: 2rem;
+    width: 17.5rem;
     
 }
 

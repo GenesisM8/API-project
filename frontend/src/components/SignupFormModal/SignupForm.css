@@ -1,15 +1,30 @@
 .signup {
     display: flex;
     flex-direction: column;
-    height: 38rem;
-    width: 27rem;
+    height: 37rem;
+    width: 28rem;
+    align-items: center;
+    justify-content: center;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
+}
+
+.signup form{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .signError {
+    display: flex;
     color: red;
     margin-top: 0;
+    width: 24.5rem;
+    height: 1.4rem;
+    padding-bottom: 2px;
+    justify-content: flex-start;
+   
 
 }
 
