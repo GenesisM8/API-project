@@ -48,7 +48,7 @@ const CurrentUserSpots = () => {
 
                                         <div> {spot.avgRating === "NaN" ? "New" : <div>
 
-                                            <p>{spot.avgRating}</p>
+                                            <p>⭐️{spot.avgRating}</p>
                                         </div>}</div>
                                     </div>
                                     <div className='lastLine2'>

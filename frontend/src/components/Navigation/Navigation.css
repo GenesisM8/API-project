@@ -41,10 +41,11 @@
 
     background-color: white;
     padding: 0.7rem;
-    box-shadow: 2px 2px 2px 2px rgb(204, 189, 189);
+    box-shadow: 2px 1px 2px 1px rgb(204, 189, 189);
     border-radius: 10px;
     /* padding-right: 3em; */
     position: relative;
+    z-index: 1;
     top: 45px;
     border: 1.5px solid rgba(61, 136, 228, 0.785);
 
