@@ -37,10 +37,10 @@ const SpotsIndex = () => {
                             <div className='middleLine'>
 
                                 <NavLink key={spot.id} to={`/spots/${spot.id}`} >
-                                 <p>{spot.city}, {spot.state}</p>   
+                                 <p className='spot-city'>{spot.city}, {spot.state}</p>   
                                 </NavLink>
                                
-                                <div> 
+                                <div className='avg-stars'> 
                                 {!spot.avgRating ? "New" : <div><p>⭐️ {Number.parseFloat(spot.avgRating).toFixed(1)}</p></div>}
                                 </div>
                             </div>

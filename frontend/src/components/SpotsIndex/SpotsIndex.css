@@ -9,6 +9,7 @@
     padding-top: 4rem;
 
 
+
 }
 
 .singleSpotContainer {
@@ -16,8 +17,13 @@
     flex-direction: column;
     width: 18rem;
     text-decoration: none;
+ 
+
 }
 
+.spot-city{
+    width: 13rem;
+}
 .middleLine {
     display: flex;
     flex-direction: row;
@@ -27,10 +33,16 @@
     padding-left: 1rem;
     padding-right: 1rem;
     height: 2.5rem;
-    font-family: sans-serif;
+    font-family: "Avenir Next",
+            sans-serif;
     color: black;
+    width: 90%;
+    font-weight: 30;
+}
 
-
+.avg-stars{
+    display: flex;
+    flex-direction: row;
 }
 
 .spotIndex {
@@ -39,6 +51,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 23px;
+    object-fit: cover;
 }
 
 .imgContainer {
@@ -46,7 +59,11 @@
     justify-content: center; */
     position: relative;
     display: inline-block;
+    transition: transform 0.3s ease;
+}
 
+.imgContainer:hover{
+    transform: scale(1.04);
 }
 
 .lastLine {
@@ -60,15 +77,21 @@
 .imgInfo {
     display: flex;
     flex-direction: column;
-    font-family: sans-serif;
+    font-family: "Avenir Next",
+        sans-serif;
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
 
 }
 
-.pText {
+/* .pText {
 
     color: black;
     font-size: 17px;
-}
+} */
 
 a:link {
     text-decoration: none;
