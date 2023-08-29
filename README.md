@@ -38,3 +38,9 @@ Running the frontend server:
 ![show-page](https://github.com/GenesisM8/SkyBnB-project/blob/main/frontend/public/show.png?raw=true)
 ![manage-page](https://github.com/GenesisM8/SkyBnB-project/blob/main/frontend/public/manage.png?raw=true)
 
+## Database Schema 
+![db-page](https://user-images.githubusercontent.com/116539364/233759933-139ce5d0-e0d6-42e0-b1fd-822c2056fbbf.png)
+
+* Genesis Mendes:
+    * Email: Genesismendes1@gmail.com
+    * LinkedIn: https://www.linkedin.com/in/genesis-mendes-8605a0263/
