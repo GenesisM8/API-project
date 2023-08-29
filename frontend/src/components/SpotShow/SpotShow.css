@@ -82,8 +82,8 @@
     flex-direction: column;
 
     border: 2px solid black;
-    width: 24rem;
-    height: 8rem;
+    width: auto;
+    height: auto;
     /* margin-right: 1rem; */
     margin-left: 1rem;
     font-family: sans-serif;

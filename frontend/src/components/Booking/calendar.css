@@ -1,0 +1,75 @@
+.calendar-input {
+    height: 1rem;
+    width: 6rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    cursor: pointer;
+
+    border: none;
+        box-sizing: border-box;
+        outline: 0;
+        position: relative;
+     
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+input[type="date"].book{
+    background-color: gray;
+}
+.calendar-input.booked {
+    /* background-color: gray; */
+    /* Customize the background color for booked dates */
+    /* color: #c32b2b; */
+    /* Customize the text color for booked dates */
+}
+
+.calendar{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 10px;
+    margin-bottom: 10px;
+    /* border: 2px solid red ; */
+    
+}
+
+.calendar-dates{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid lightgrey;
+    width: 100%;
+    border-radius: 10px;
+
+}
+
+/* .calendar-input::-webkit-calendar-picker-indicator {
+    display: none;
+
+} */
+
+.calendar-left{
+    /* border: 2px solid orange; */
+    height: 2.5rem;
+    width: 100%;
+    padding: 10px;
+    padding-left: 18px;
+    border-right: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;;
+}
