@@ -5,7 +5,12 @@ To explore SkyBnb in action, visit the live site at: https://airbnb-project-yghy
 
 Hello there! This is SkyBnb, an online platform that functions similarly to Airbnb.
 
-It allows users to access a range of features including spots, and give reviews services.
+SkyBnb currently enables users to engage with two key features:
+
+1. Full CRUD for Listing Spots: create, view, update, and delete spot listings, providing you with control over your property details.
+2. Leave Reviews: Share your experiences by leaving reviews and manage them by deleting when necessary.
+
+I have exciting plans on the horizon, including the implementation of booking features and integration of AWS, which will further enhance your experience. Enjoy using SkyBnb!
 
 
 # Functionalities 
