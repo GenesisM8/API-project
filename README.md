@@ -41,6 +41,7 @@ Running the frontend server:
 ## Database Schema 
 ![db-page](https://user-images.githubusercontent.com/116539364/233759933-139ce5d0-e0d6-42e0-b1fd-822c2056fbbf.png)
 
+# Contact
 * Genesis Mendes:
     * Email: Genesismendes1@gmail.com
     * LinkedIn: https://www.linkedin.com/in/genesis-mendes-8605a0263/
